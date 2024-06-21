@@ -52,6 +52,10 @@ public class ExServicelmpl implements ExService {
 		exm.updateSchedule(rvo);
 	}
 
+	public void scheduleRequsestOk(ReservationVO rvo) {
+		exm.scheduleRequsestOk(rvo);
+	}
+	
 	public ExVO showTName(ExVO evo) {
 		return exm.showTName(evo);
 	}
@@ -62,5 +66,33 @@ public class ExServicelmpl implements ExService {
 	
 	public ExVO doctorIdForUpdate(ExVO evo) {
 		return exm.doctorIdForUpdate(evo);
+	}
+	
+	public void scheduleRequsest(ReservationVO rvo) {
+		exm.scheduleRequsest(rvo);
+	}
+	
+	public ArrayList<ReservationVO> scheduleRequsestList(ReservationVO rvo){
+		return exm.scheduleRequsestList(rvo);
+	}
+	
+	public void scheduleRequsestColorChange(ReservationVO rvo) {
+		exm.scheduleRequsestColorChange(rvo);
+	}
+	
+	public ReservationVO scheduleRequsestDocName(ReservationVO rvo) {
+		return exm.scheduleRequsestDocName(rvo);
+	}
+	
+	public void rejectSchedule(ReservationVO rvo) {
+		exm.rejectSchedule(rvo);
+	}
+	
+	public void rejectScheduleRequest(ReservationVO rvo) {
+		exm.rejectScheduleRequest(rvo);
+	}
+	
+	public ReservationVO sendScheduleRequestCheck(ReservationVO rvo) {
+		return exm.sendScheduleRequestCheck(rvo);
 	}
 }

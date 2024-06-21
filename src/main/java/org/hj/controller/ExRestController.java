@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -70,17 +71,15 @@ public class ExRestController {
 		return ResponseEntity.ok ("Reservation with id " + no + " canceled successfully.");
 	}
 
-		// 병원 의사들의 전체적인 스케쥴이 나오게
-		@PostMapping(value = "/api/allSchedules", produces = "application/json; charset=UTF-8")
-		public ResponseEntity<String> allSchedules() throws JsonProcessingException {
-			
-			List<ReservationVO> allSchedule = es.allSchedules();
-			ObjectMapper objectmapper = new ObjectMapper();
-	
-			String allSchedules = objectmapper.writeValueAsString(allSchedule);
-			
-			return ResponseEntity.ok(allSchedules);
-		}
+	// 병원 의사들의 전체적인 스케쥴이 나오게
+	@PostMapping(value = "/api/allSchedules", produces = "application/json; charset=UTF-8")
+	public ResponseEntity<String> allSchedules() throws JsonProcessingException {
+				
+	List<ReservationVO> allSchedule = es.allSchedules();
+	ObjectMapper objectmapper = new ObjectMapper();		
+	String allSchedules = objectmapper.writeValueAsString(allSchedule);				
+	return ResponseEntity.ok(allSchedules);
+	}
 		
 	// 의사가 일정 추가
 
@@ -110,13 +109,58 @@ public class ExRestController {
 	        return ResponseEntity.ok(jsonDoctorList);
 	    }
 	    
-	    @PostMapping("/api/updateSchedule")
-	    											//@RequestBody 어노테이션을 사용하여 JSON 데이터를 매핑합니다.
-		 public ResponseEntity<String> updateSchedule(@RequestBody ReservationVO rvo) throws JsonProcessingException {		
-			
-	    	es.updateSchedule(rvo);	
+	    
+	 // 일정 수정 요청 거절하기
+	    @PostMapping("/api/rejectSchedule")    											//@RequestBody 어노테이션을 사용하여 JSON 데이터를 매핑합니다.
+		 public ResponseEntity<String> rejectSchedule(@RequestBody ReservationVO rvo) throws JsonProcessingException {					
 	    	System.out.println(rvo);
-			return ResponseEntity.ok("일정 수정을 완료하였습니다!");
+	    	es.rejectSchedule(rvo); // 요청 거절 후 요청되었던 일정
+	    	es.rejectScheduleRequest(rvo); // 요청 거절후 원래 일정
+			return ResponseEntity.ok("rejected Schedule successfully");
 		}
+	    
+	    
+	    // 일정 수정 요청 수락
+	    @PostMapping("/api/updateSchedule")    											//@RequestBody 어노테이션을 사용하여 JSON 데이터를 매핑합니다.
+		 public ResponseEntity<String> updateSchedule(@RequestBody ReservationVO rvo) throws JsonProcessingException {					
+	    	System.out.println(rvo);
+	    	es.updateSchedule(rvo);
+	    	es.scheduleRequsestOk(rvo);	    	
+			return ResponseEntity.ok("Updated successfully.");
+		}
+	    
+
+	    // 일정 수정 요청전에 요청 받는 의사가 같은 일정이 있는지 검사
+	    @PostMapping("/api/sendScheduleRequestCheck")
+		public ResponseEntity<ReservationVO> sendScheduleRequestCheck(@RequestBody ReservationVO rvo) throws JsonProcessingException {					 		    	
+	    	return ResponseEntity.ok(es.sendScheduleRequestCheck(rvo));
+	    }
+	    
+	    // 일정 수정 요청
+	    @PostMapping("/api/sendScheduleRequest")
+		public ResponseEntity<String> scheduleRequest(@RequestBody ReservationVO rvo) throws JsonProcessingException {					 	
+	    	es.scheduleRequsest(rvo);
+	    	es.scheduleRequsestColorChange(rvo);
+	    	return ResponseEntity.ok("sendRequest OK");
+	    }
+	    
+	    
+	    // 요청받은 수정 스케줄 리스트 받아오기
+		@GetMapping(value = "/api/scheduleRequsestList", produces = "application/json; charset=UTF-8")
+		public ResponseEntity<String> scheduleRequsest(ReservationVO rvo) throws JsonProcessingException {		
+		List<ReservationVO> scheduleRequsestList = es.scheduleRequsestList(rvo);
+		ObjectMapper objectmapper = new ObjectMapper();		
+		String scheduleRequsestLists = objectmapper.writeValueAsString(scheduleRequsestList);				
+		return ResponseEntity.ok(scheduleRequsestLists);
+		}
+		
+		// 요청받은 수정 스케줄의 원래 담당의 이름 가져오기
+		@GetMapping(value = "/api/beforChangeSchtName", produces = "application/json; charset=UTF-8")	
+		public ResponseEntity<ReservationVO> scheduleRequsestDocName(@RequestParam("reservedNo") int reservedNo,ReservationVO rvo) throws JsonProcessingException {			
+		rvo.setReservedNo(reservedNo);			
+		return ResponseEntity.ok(es.scheduleRequsestDocName(rvo));
+		}
+		
+		
 	}
 

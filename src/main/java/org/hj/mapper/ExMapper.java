@@ -23,9 +23,28 @@ public interface ExMapper {
 	
 	public void updateSchedule(ReservationVO rvo);
 	
+	public void scheduleRequsestOk(ReservationVO rvo);
+	
 	public ExVO showTName(ExVO evo);
 	
 	public ExVO isLogin(ExVO evo);
 	
 	public ExVO doctorIdForUpdate(ExVO evo);
+	
+	public void scheduleRequsest(ReservationVO rvo);
+	
+	public ArrayList<ReservationVO> scheduleRequsestList(ReservationVO rvo);
+	
+	public void scheduleRequsestColorChange(ReservationVO rvo);
+	
+	public ReservationVO scheduleRequsestDocName(ReservationVO rvo);
+
+	public void rejectSchedule(ReservationVO rvo);
+	
+	public void rejectScheduleRequest(ReservationVO rvo);
+	
+	public ReservationVO sendScheduleRequestCheck(ReservationVO rvo);
+	
+	
 }
+
