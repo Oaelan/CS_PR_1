@@ -181,10 +181,8 @@ a {
 }
 </style>
 <script> document.addEventListener('DOMContentLoaded', function() {   
-    
-   // console.log(#{.fc-allButton-button}.text);
-    document.querySelector('.fc-allButton-button');
-    
+    // all/me 유무 로그인시 디폴트값 ME
+    var allOrMe = "ME";   
     // 로그인시 가져오는 일정 데이터 
 	var jsonData;
 	// 상태 변수 추가
@@ -193,15 +191,7 @@ a {
 	var isLoginedId = document.getElementById("doctorLoginId").value;
 	//일정에 존재하는 담당의 
 	var nowDoctorId = document.getElementById('editEventDoctorId');
-	
-	
 
-	
-	
-	
-	
-	
-	
 	// 로그인한 의사의 수정요청 리스트를 불러오는 함수
 	function scheduleRequsestList() {
 	    $.ajax({
@@ -229,10 +219,8 @@ a {
 	                
 	                var endTime = item.end || ''; // endTime 변수 정의, 없을 경우 빈 문자열 설정
 	           					
-	                // 클릭 이벤트 처리
-	                requestDiv.addEventListener('click', function() {
-	                    
-	                    
+	                // 요청받은 수정 스케줄 요소에 클릭 이벤트 추가 
+	                requestDiv.addEventListener('click', function() {	                   	                    
 	                 // 서버로 데이터 전송
 	    				$.ajax({
 	    					type: 'GET',
@@ -258,6 +246,7 @@ a {
 	    						        success: function(response) {
 	    						            console.log(response);
 	    						            calendar.addEvent(item); // 캘린더에 이벤트 추가
+	    						            
 
 	    						            $('#detailModal').modal('hide'); // 상세 모달 닫기
 	    						            // 해당 이벤트가 일어나면 화면에 보이는 수정 목록 사라지게 하기
@@ -538,7 +527,11 @@ a {
 		},
 		
 		eventClick: function(info) {
-    
+		    if (allOrMe === 'ALL') {
+		        // allOrMe 변수의 값이 "ALL"일 때 실행되지 않도록 설정
+		        $('#viewingAllSchedulesModal').modal('show')
+                return false; // 이벤트 실행 취소		        
+		    }else{
 		 	// 수정할 일정의 정보를 가져옵니다.
 			var date = new Date(info.event.start);
 			// 날짜 부분 추출 (년-월-일 형식)
@@ -591,27 +584,28 @@ a {
 			
 			
 			
-				document.getElementById('delete-event-btn').addEventListener('click', function() {
-				    if(info.event.extendedProps.doctorId == document.getElementById("doctorLoginId").value){
+				$('#delete-event-btn').off('click').on('click', function() {
+				    if(info.event.extendedProps.doctorId == document.getElementById("doctorLoginId").value) {
 				        $.ajax({
-							type: 'POST',
-							url: '/api/deleteEvent',
-							data: {
-								eventId: info.event.extendedProps.no
-							},
-							success: function(response) {
-							    // 선택한 일정의 의사와 로그인한 의사의 일치하면 삭제 진행				   
-							    console.log('일정이 삭제되었습니다.');
-							 	// FullCalendar에서 이벤트 삭제	
-							    info.event.remove();
-								$('#deleteModal').modal('hide');
-								$('#scheduleDeletedModal').modal('show');
-							}
-						});			              
-				    }else{
-				       	 	$('#deleteModal').modal('hide');
-				        	$('#notYourScheduleModal').modal('show');
-				        }					
+				            type: 'POST',
+				            url: '/api/deleteEvent',
+				            data: {
+				                eventId: info.event.extendedProps.no
+				            },
+				            success: function(response) {
+				                // 선택한 일정의 의사와 로그인한 의사의 일치하면 삭제 진행
+				                console.log(allOrMe);
+				                console.log('일정이 삭제되었습니다.');
+				                // FullCalendar에서 이벤트 삭제
+				                info.event.remove();
+				                $('#deleteModal').modal('hide');
+				                $('#scheduleDeletedModal').modal('show');
+				            }
+				        });
+				    } else {
+				        $('#deleteModal').modal('hide');
+				        $('#notYourScheduleModal').modal('show');
+				    }
 				});
 									    			
 			//수정 버튼 누르면 수정모달 띄우기			
@@ -709,15 +703,17 @@ a {
 			});
 
 				
-				},
+		}},
 		customButtons: {
 			allButton: { // 커스텀 버튼 설정
 				text: 'ALL',
-				click: function() {
+				click: function() {				    				    				    
 					if (isShowingAll) {
 						loadDoctorSchedule(); // 현재 모든 스케줄을 보고 있으면 로그인한 의사의 스케줄을 로드
+			            allOrMe = $(this).text(); // jQuery를 사용하여 클릭된 버튼의 텍스트 값을 가져옴			            						
 					} else {
 						loadAllSchedules(); // 현재 로그인한 의사의 스케줄을 보고 있으면 모든 스케줄을 로드
+						allOrMe = $(this).text(); // allButton의 text값을 넣는다.		
 					}
 				}
 			},
@@ -749,6 +745,8 @@ a {
 	loadDoctorSchedule(); // 초기 로드시 로그인한 의사의 스케줄을 불러옴
 	scheduleRequsestList(); // 로그인한 의사의 수정 요청 리스트를 불러옴
 	//console.log(isLoginedId)
+	
+	
 		
 }); </script>
 </head>
@@ -1134,6 +1132,21 @@ a {
 				<div class="modal-body">해당 일정이 삭제되었습니다.</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 전체 일정을 조회중일 때 삭제, 추가, 수정 기능을 쓰려고 할 때 -->
+	<div class="modal fade" id="viewingAllSchedulesModal" tabindex="-1" role="dialog" aria-labelledby="viewingAllSchedulesModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="viewingAllSchedulesModalLabel">알림</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">전체 일정을 조회 중일 때는 해당 기능을 사용할 수 없습니다.</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>
