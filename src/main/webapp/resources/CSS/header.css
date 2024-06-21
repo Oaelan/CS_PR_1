@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+html, body {
+	padding: 0;
+    margin: 0;
+    /*height: 100%;
+    overflow: hidden;	/*스크롤바를 숨기기 위해 */
+    display: flex;
+    flex-direction: column;
+    /*스크롤 안되게 하려면 height,overflow 작성
+	아니면, 스크롤해서 밑에까지 화면 나오게 하려면 height,overflow 지우면 됨*/
+}
+header {
+	background-color: white;
+	border: 1px solid lightgray;
+	padding: 5px;
+	margin: 0;
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
+	align-items: center;     /* 세로 중앙 정렬 */
+}
+
+header ul {
+	position: relative;
+	left: 250px;
+}
+
+header li{
+	list-style: none;
+	display: inline;
+	margin-left: 30px;
+}
+
+header a {
+	color: #333333;
+	text-decoration: none;
+	
+}
+
+#hspt {
+	height: 45px;
+	position: relative;
+	left: 100px;
+}
+.menu {
+	 margin-left: 100px;
+}
+
+nav ul {
+	position: relative;
+	bottom: 3px;
+	margin: 15px 250px 15px 300px;
+}
+
+nav li {
+	display: inline;
+	margin-left: 120px;
+	font-size: 18px;
+	position: relative;
+	font-family: 나눔고딕;
+}
+
+nav {
+	background-color: white;
+	padding: 10px;
+	height: 50px;
+	border-bottom: 1px solid lightgray;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}

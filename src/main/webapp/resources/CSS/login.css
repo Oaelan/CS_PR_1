@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+.entire {
+	background-color: #f3f3f3;
+	height: 1000px;
+}
+
+#box {
+	border-radius: 20px;
+	border: 1px solid #BDBDBD;
+	width: 500px;
+	height: 450px;
+	position: relative;
+	background-color: white;
+	
+}
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 12%;
+}
+
+
+input {
+	width: 400px;
+	height: 40px;
+	border: 1px solid #BDBDBD;
+	border-radius: 5px;
+	margin: 40px;
+	position: relatvie;
+	padding-left: 10px;
+	
+}
+
+input:focus {
+    outline: none; /* 기본 브라우저 스타일 제거 */
+}
+
+#id {
+	position: relative;
+	top: 30px;
+}
+
+#pw {
+	position: relative;
+	bottom: 10px;
+}
+#box1{
+	position: relative;
+	bottom: 20px;
+}
+#box2{
+	position: relative;
+	bottom: 20px;
+}
+#user{
+	position: relative;
+	left: 40px;
+	font-family: 나눔고딕;
+}
+#ps{
+	position: relative;
+	left: 40px;
+	font-family: 나눔고딕;
+	
+}
+
+#link {
+	position: relative;
+	left: 400px;
+	bottom: 10px;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+#login {
+	background-color: #2263bb;
+	color: white;
+	border: none;
+	width: 417px;
+	height: 40px;
+	position: relative;
+	left: 40px;
+	bottom: 15px;
+	font-size: 15px;
+	border-radius: 5px;
+}
+
+p {
+	color: #BDBDBD;
+	font-size: 10px;
+	position: relative;
+	left: 50px;
+	top: 20px;
+	font-family: 나눔고딕;
+}

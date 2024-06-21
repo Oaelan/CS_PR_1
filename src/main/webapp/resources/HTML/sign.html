@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style>
+</style>
+<link rel="stylesheet" href="../CSS/header.css">
+<link rel="stylesheet" href="../CSS/footer.css">
+<link rel="stylesheet" href="../CSS/sign.css">
+</head>
+<body>
+<header>
+		<img id="hspt" src="../img/hospital.PNG" onclick="main()">
+		<div>
+			<ul>
+				<li><a href="login.html">로그인</a></li>
+				<li><a href="sign.html">회원가입</a></li>
+			</ul>
+		</div>
+	</header>
+	<nav>
+		<div class="menu">
+		<ul>
+			<li><a href="hospital.html">홈</a></li>
+			<li><a href="">진료안내</a></li>
+			<li><a href="">이용안내</a></li>
+			<li><a href="">병원소개</a></li>
+			<li><a href="">문의</a></li>
+		</ul>
+		</div>
+	</nav>
+	<div class="entire">
+	<form action="" method="post">
+		<div id="box">
+			<p></p>
+			<table>
+				<tr>
+					<td id="text">아이디</td>
+				</tr>
+				<tr>
+					<td><input type="text" id="userId" placeholder="아이디"></td>
+				</tr>
+				<tr>
+					<td><label id="userIdLabel"></label></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td id="text">비밀번호</td>
+				</tr>
+				<tr>
+					<td><input type="password" id="pw" placeholder="비밀번호"></td>
+				</tr>
+				<tr>
+					<td><label id="passwordLabel"></label></td>
+				</tr>
+
+			</table>
+			<table>
+				<tr>
+					<td id="text">비밀번호 확인</td>
+				</tr>
+				<tr>
+					<td><input type="password" placeholder="비밀번호 확인" id="pwcheck"></td>
+				</tr>
+				<tr>
+					<td><label id="confirmLabel"></label></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td id="text">이름</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder="이름" id="name"></td>
+				</tr>
+				<tr>
+					<td><label id="nameLabel"></label></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td id="text">전화번호</td>
+				</tr>
+				<tr>
+					<td><input type="text" placeholder="전화번호" id="phone"></td>
+				</tr>
+				<tr>
+					<td><label id="PhoneLabel"></label></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td><input type="submit" value="회원가입" id="btn"></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	</div>
+	<footer>
+		<pre>주소 : 03080 서울특별시 종로구 대학로 101(연건동 28)		대표전화 : 1588-5700		홈페이지 의견접수</pre>
+		<pre>COPYRIGHT 2024 SEOUL NATIONAL UNIVERSITY HOSPITAL. ALL RIGHTS RESERVED</pre>
+	</footer>
+	<script type="text/javascript" src="../JS/main.js"></script>
+	<script type="text/javascript" src="../JS/login.js"></script>
+</body>
+</html>

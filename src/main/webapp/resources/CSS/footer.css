@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+footer {
+	padding: 20px;
+	background-color: #22263b;
+	text-align: center;
+	bottom: 100; /* 화면 하단에 배치 */
+	width: 100%; /* 화면 전체의 너비를 차지하도록 설정 */
+	color: white;
+	position: relative;
+}
+
+pre {
+	font-family: 나눔고딕;
+	font-size: 15px;
+}

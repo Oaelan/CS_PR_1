@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  
+  <mapper namespace="org.hj.mapper.LoginMapper">
+  	
+  	<!--  회원가입한 값을 넣어줌 -->	
+  	<insert id = "pjoinSuccess" parameterType="org.hj.model.LoginVO">
+  		insert into user(id, password, name, birth, phone, userType) values(
+  			#{id}, #{password}, #{name}, #{birth}, #{phone}, #{userType}
+  			)
+  	</insert>
+  	<insert id = "djoinSuccess" parameterType="org.hj.model.LoginVO">
+  		insert into user(id, password, name, birth, phone, userType) values(
+  			#{id}, #{password}, #{name}, #{birth}, #{phone}, #{userType}
+  			)
+  	</insert>
+  	
+  	<!--  로그인할 때 값을 가져옴 -->	
+  	<select id="login" resultType="org.hj.model.LoginVO">
+  		select id, name, userType
+  		from user
+  		where id=#{id} and password=#{password}
+  	</select>
+  
+		<!--  예약할 때 값을 가져옴 -->	
+  	<select id="reserveInfo" resultType="org.hj.model.LoginVO">
+  		select name, birth 
+  		from user
+  		where id=#{id}
+  	</select>
+  
+  </mapper>

@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+.entire {
+	background-color: #f3f3f3;
+	height: 1130px;
+}
+
+#box {
+	border-radius: 20px;
+	border: 1px solid #BDBDBD;
+	width: 600px;
+	height: 850px;
+	position: relative;
+	background-color: white;
+	margin-top: 40px;
+}
+
+form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5%;
+}
+
+#text {
+	position: absolute;
+	left: 45px;
+	margin-top: 10px;
+	font-family: 나눔고딕;
+}
+
+input {
+	width: 500px;
+	height: 40px;
+	border: 1px solid #BDBDBD;
+	border-radius: 5px;
+	margin: 40px;
+	margin-bottom: 20px;
+	position: relative;
+	padding-left: 10px;
+}
+
+label {
+	position: relative;
+	left: 45px;
+	bottom: 25px;
+	font-size: 12px;
+	font-family: 나눔고딕;
+}
+
+#btn {
+	background-color: #2263bb;
+	border-radius: 5px;
+	color: white;
+	font-size: 17px;
+	width: 515px;
+	height: 50px;
+}
+
+.btn {
+	display: flex;
+	flex-direction: column;
+}
+
+input:focus {
+	outline: none; /* 기본 브라우저 스타일 제거 */
+}

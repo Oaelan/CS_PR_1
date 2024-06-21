@@ -1,0 +1,359 @@
+@charset "UTF-8";
+
+html, body {
+	padding: 0;
+    margin: 0;
+    /*height: 100%;
+    overflow: hidden;	/*스크롤바를 숨기기 위해 */
+    display: flex;
+    flex-direction: column;
+    /*스크롤 안되게 하려면 height,overflow 작성
+	아니면, 스크롤해서 밑에까지 화면 나오게 하려면 height,overflow 지우면 됨*/
+}
+
+#rv>li {
+	color: white;
+}
+.entire{
+	background-color: #f3f3f3;
+	height: 1300px;
+}
+
+#main {
+
+	display: flex;
+	align-items: center;
+}
+
+#main1 img {
+	margin-left: 110px;
+}
+
+.slide {
+    display: none; /* 모든 슬라이드를 숨김 */
+    width: 100%; /* 이미지가 컨테이너에 맞게 보이도록 너비 설정 */
+}
+
+.slide:first-child {
+    display: block; /* 첫 번째 슬라이드만 보이게 함 */
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center;    /* 세로 중앙 정렬 */
+    margin: 1% 0;        /* 섹션 요소와의 간격 설정 */
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center;    /* 세로 중앙 정렬 */
+    margin: 1% 0;        /* 섹션 요소와의 간격 설정 */
+    
+    
+}
+
+.container1 {
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center;    /* 세로 중앙 정렬 */
+    margin: 1% 0;        /* 섹션 요소와의 간격 설정 */
+    
+}
+#content1, #content2, #content3, #content4 {
+    width: 200px;
+    height: 200px;
+    padding: 35px;
+    margin: 10px;
+}
+#content1 {
+	background-color: #008ace;
+}
+
+#content2 {
+	background-color: #2763ba;
+	width: 220px;
+    height: 220px;
+    padding: 25px;
+	
+}
+
+#content3 {
+	background-color: #2ca48f;
+}
+#content4 {
+	background-color: #fff;
+	border: 1px solid #2263bb;
+	width: 220px;
+	height: 220px;
+	padding: 25px;
+}
+
+#content5, #content6 {
+	display: inline;
+	width: 540px;
+	height: 260px;
+	
+}
+
+#content5{
+	margin-right: 30px;
+	background-image: url("../img/professor.PNG");
+	
+}
+
+#content6	{
+	margin-left: 32px;
+	background-image: url("../img/news.PNG");
+	
+}
+
+footer {
+	padding: 20px;
+	background-color: #22263b;
+	text-align: center;
+	/*position: fixed; /* 화면 아래에 고정 */
+	bottom: 0; /* 화면 하단에 배치 */
+	width: 100%; /* 화면 전체의 너비를 차지하도록 설정 */
+	color: white;
+	position: relative;
+	right: 50px;
+}
+
+pre {
+	font-family: 나눔고딕;
+	font-size: 15px;
+	
+}
+
+#log {
+	border-right: 1px solid lightgray;
+}
+
+input {
+	width: 200px;
+	height: 30px;
+}
+
+input:focus {
+    outline: none; /* 기본 브라우저 스타일 제거 */
+}
+
+input::placeholder {
+    font-size: 15px; /* placeholder 글자 크기 조정 */
+}
+
+#one {
+	color: white;
+	margin-top: 30px;
+}
+
+#two {
+	color: white;
+	margin-top: 40px;
+}
+
+#three{
+	color: white;
+	margin-top: 30px;
+}
+
+#three1{
+	color: white;
+}
+
+#tel1{
+	font-size: 20px;
+}
+
+#tel2{
+	font-size: 16px;
+}
+#inform {
+	color: white;
+	margin-top: 0px;
+	font-family: 나눔고딕;
+	font-size: 20px;
+}
+
+#rv{
+	padding: 0px;
+}
+
+
+#rv1 {
+	position: relative;
+	padding-left: 0px;
+	left: 10px;
+}
+#rv1>li{
+	float: left;
+    height: 38px;
+    margin-right: -1px;
+    padding: 0 12px;
+    border: 1px solid #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 38px;
+    list-style: none;
+    position: relative;
+    left: 20px;
+    font-family: 나눔고딕;
+}
+
+#rv1 > li > a {
+    color: white; /* 링크 글씨 색깔을 흰색으로 변경 */
+    text-decoration: none;
+    font-size: 13px;
+}
+
+#rv2 {
+	position: relative;
+	padding-left: 0px;
+	left: 10px;
+	top: 10px;
+}
+
+.down{
+	position: relative;
+	top: 8px;
+}
+#rv2>li{
+	float: left;
+    height: 38px;
+    margin-right: -1px;
+    position: relative;
+    bottom: 10px;
+    padding: 0 12px;
+    border: 1px solid #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 38px;
+    list-style: none;
+}
+
+#rv2 > li > a {
+    color: white; /* 링크 글씨 색깔을 흰색으로 변경 */
+    text-decoration: none;
+    font-size: 13px;
+}
+
+#rv3 {
+	position: relative;
+	padding-left: 0px;
+	bottom: 5px;
+	left: 5px;
+}
+#rv3>li{
+	float: left;
+    height: 38px;
+    margin-right: -1px;
+    padding: 0 12px;
+    border: 1px solid #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 38px;
+    list-style: none;
+    
+}
+
+#rv3 > li > a {
+    color: white; /* 링크 글씨 색깔을 흰색으로 변경 */
+    text-decoration: none;
+    font-size: 13px;
+}
+
+#rv4 {
+	position: relative;
+    padding-left: 0px;
+    top: 25px;
+    left: 5px;
+}
+#rv4>li{
+	float: left;
+    height: 38px;
+    margin-right: -1px;
+    padding: 0 12px;
+    border: 1px solid #2763ba;
+    font-size: 14px;
+    text-align: center;
+    line-height: 38px;
+    list-style: none;
+    
+}
+
+#rv4 > li > a {
+    color: #2763ba; /* 링크 글씨 색깔을 흰색으로 변경 */
+    text-decoration: none;
+    font-size: 13px;
+    margin-left: 0px;
+}
+
+
+#wrap4 {
+	position: relative;
+	bottom: 0px;
+}
+
+#wrap4 a {
+	text-decoration: none;
+	color: #333;
+	display: inline;
+	margin-left: 40px;
+}
+
+#wrap4 strong {
+	font-size: 20px;
+}
+
+#box {
+	position: relative;
+}
+
+
+#sign {
+    margin-top: 10px; /* ul 요소 아래 여백 추가 */
+    padding-left: 30px;
+}
+
+#sign>li{
+	display: inline;
+	font-size: 16px;
+	position: relative;
+	font-family: 나눔고딕;
+}
+
+#sign>li>a{
+	color: gray;
+    text-decoration: none;
+}
+
+#forgot {
+	position: relative;
+	float: right;
+	left: 8px;
+}
+#forgot>li>a{
+	text-decoration: none;
+	color: gray;
+	
+}
+
+#forgot>li {
+	list-style: none;
+	font-size: 13px;
+}
+#loginBtn {
+    background-color: #2263bb;
+    width: 207px;
+    height: 35px;
+    color: white;
+    border: none; /* 크기 일관성을 위해 테두리 제거 */
+    cursor: pointer;
+    box-sizing: border-box; /* 패딩과 테두리를 너비와 높이에 포함시킴 */
+    font-size: 14px;
+    
+}

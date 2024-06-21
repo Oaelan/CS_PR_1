@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+html, body {
+	padding: 0;
+    margin: 0;
+    /*height: 100%;
+    overflow: hidden;	/*스크롤바를 숨기기 위해 */
+    display: flex;
+    flex-direction: column;
+    /*	스크롤 X  => height,overflow 작성
+		스크롤 O  => height,overflow 삭제 	*/
+}
+
+.entire {
+	background-color: white;
+	height: 1000px;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}	
+
+.content1 {
+    background-color: white;
+    width: 800px;
+    height: 800px;
+    margin: 50px;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.text {
+	font-size: 30px;
+    font-weight: bold;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-bottom: 1px solid lightgray;
+	margin-bottom: 30px;
+}
+
+.doctor img {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 120px;
+    height: 150px;
+    margin: 10px 20px 40px 0;
+}
+
+.op1 {
+	display: flex;
+	margin-right: 15px;
+	margin-top: 15px;
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid lightgray;
+}
+
+.inform {
+	font-family: 나눔고딕;
+	font-size: 20px;
+	position: relative;
+	margin: 10px 0px 0px 20px;
+}
+
+.inform p {
+	font-family: 나눔고딕;
+	font-size: 13px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.button-container {
+	display: flex;
+	justify-content: flex-end; /* 버튼을 중앙에 배치 */
+	align-items: flex-end;
+	gap: 10px; /* 버튼 사이 간격 */
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 20px;
+}
+
+.button-container input {
+	width: 70px;
+	height: 35px;
+	margin-bottom: 30px;
+}
+
+.button1 {
+	background-color: white;
+	color: #9c9c9c;
+	border: 1px solid lightgray;
+}
+
+.button2 {
+	background-color: #9c9c9c;
+	color: white;
+	border: none;
+}
+
+th {
+	color: gray;
+}
+
+th, td {
+	width: 150px;
+	height: 40px;
+	text-align: left;
+}
+
+.hos {
+	color: #429aff;
+}
+
+
+.warn {
+	margin-top: 100px;
+}
+
+.date {
+	width: 300px;
+}

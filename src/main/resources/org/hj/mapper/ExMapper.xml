@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.hj.mapper.ExMapper">
+
+	<!-- 로그인 -->
+	<select id="isLogin" resultType="org.hj.model.ExVO">
+		select * from user
+		where id = #{id}
+	</select>
+
+	<!-- 로그인한 아이디 값 가져오기 -->
+	<select id="doctorIdForUpdate" resultType="org.hj.model.ExVO" parameterType="org.hj.model.ExVO">
+		select id from user
+		where id =
+		#{id}
+	</select>
+
+	<!-- 로그인한 아이디와 같은 의사의 스케쥴표 셀렉트 -->
+	<select id="showSchedule"
+		resultType="org.hj.model.ReservationVO"
+		parameterType="org.hj.model.ExVO">
+		select * from ex
+		where doctorId = #{id}
+	</select>
+
+
+
+	<!-- 로그인한 의사의 이름 가져오기 -->
+	<select id="showTName"
+		resultType="org.hj.model.ExVO"
+		parameterType="org.hj.model.ExVO">
+		select name from user
+		where id = #{id}
+	</select>
+	
+
+	<!-- 의사가 일정 삭제하기 -->
+	<delete id="deletSchedule"
+		parameterType="org.hj.model.ReservationVO">
+		delete from ex
+		where no = #{no}
+	</delete>
+
+	<!-- 전체 일정 가져오기 -->
+	<select id="allSchedules"
+		resultType="org.hj.model.ReservationVO">
+		select * from ex;
+	</select>
+
+
+	<!-- 의사가 일정 추가 -->
+	<insert id="addSchedule"
+		parameterType="org.hj.model.ReservationVO">
+		INSERT INTO ex (doctorId, tName, title, birth, start,
+		backgroundColor)
+		VALUES (#{doctorId}, #{tName}, #{title}, #{birth},
+		#{start}, #{backgroundColor})
+	</insert>
+
+
+	<!-- 의사가 일정 추가 할 때 아이디와 매칭해서 이름 가져오기 -->
+	<select id="selectTname" resultType="org.hj.model.ExVO"
+		parameterType="org.hj.model.ReservationVO">
+		select name from user
+		where id = #{doctorId}
+	</select>
+
+	<!-- 의사가 스케쥴 수정 -->
+	<update id="updateSchedule"
+		parameterType="org.hj.model.ReservationVO">
+
+		UPDATE ex SET
+		doctorId = #{doctorId},
+		tName = #{tName},
+		title = #{title},
+		start = #{start},
+		birth = #{birth},
+		backgroundColor = #{backgroundColor}
+		WHERE
+		no = #{no};
+	</update> 
+
+<!-- 의사가 스케쥴 수정할 때 진료과를 선택 했을 때 해당 과의 의사 이름 받아오기 -->
+	<select id="doctorList" resultType="org.hj.model.ExVO"
+		parameterType="org.hj.model.ExVO">
+		select name,id from user
+		where userType = #{userType}
+	</select>
+
+</mapper>

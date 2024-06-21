@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.hj.mapper.ReservationMapper">
+	
+	<insert id = "putReserveInfo" parameterType="org.hj.model.ReservationVO">
+  		insert into reservation(doctorId, tName, birth, title, start) values(
+  			#{doctorId}, #{tName}, #{birth}, #{title}, #{start}
+  			)
+  	</insert>
+  
+  
+	<select id = "getTime" parameterType="org.hj.model.ReservationVO" resultType="org.hj.model.ReservationVO">
+		select start from reservation
+		where doctorId = #{doctorId} and active = true
+	</select>  
+	
+	<!-- 예약한 선생님 이름 가져옴 -->
+	<select id = "selectDoctor" parameterType="org.hj.model.LoginVO" resultType="org.hj.model.LoginVO">
+		select name from user
+		where  id = #{id}
+	</select>  
+	
+	<!-- 환자가 예약한 내용 가져옴 -->
+	<select id = "selectReserveInfo" parameterType="org.hj.model.ReservationVO" resultType="org.hj.model.ReservationVO">
+		select no, tName,start,backgroundColor from reservation
+		where  title = #{title} and birth = #{birth} and active = true
+	</select>  
+	
+	<!-- 진료타입 가져옴 -->
+	<select id = "selectBack" parameterType="org.hj.model.ReservationVO" resultType="org.hj.model.ReservationVO">
+		select backgroundColor from reservation
+		where  reservedNo = #{no}
+	</select>  
+	
+	
+</mapper>
