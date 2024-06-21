@@ -229,6 +229,7 @@ a {
 	    					dataType: 'json',
 	    					data: { reservedNo: item.reservedNo }, 	    			
 	    					success: function(response) {
+	    					    console.log(item.start)
 	    						// console.log('수정 전 일정의 담당의 의사 이름:', response);	    			
 	    						 // 모달 창에 상세 내용을 추가합니다.                  
 	    	                    var detailContent = document.getElementById('detailContent');
@@ -639,9 +640,15 @@ a {
 			    var selectedODoctorName = doctorSelect.options[doctorSelect.selectedIndex].text;
 			    var selectedODoctorId = doctorSelect.value;
 			    var selectedBackgroundColor = document.querySelector('input[name="editEventType"]:checked').value;
-
-			    // 수정할 일정 정보 객체 생성
-			    var updateStart = new Date(info.event.start).toISOString().slice(0, 19).replace('T', ' ');
+			   
+				 // JavaScript Date 객체로 변환
+			    var jsDate = new Date(info.event.start);
+			 	// 원하는 포맷으로 시간 변환 (예시: YYYY-MM-DD HH:MM:SS)
+			    var formattedDate = jsDate.toLocaleString('en-US', { timeZone: 'Asia/Seoul' });
+			    
+			    var updateStart = jsDate.toISOString().slice(0, 19).replace('T', ' ');
+			    console.log(info.event.start);   			
+			    console.log(updateStart);
 			    var updateSchedule = {
 			        no: info.event.extendedProps.no,
 			        birth: info.event.extendedProps.birth,
@@ -652,7 +659,7 @@ a {
 			        backgroundColor: selectedBackgroundColor,
 			        active: false
 			    };
-
+				
 			    // 로그인한 의사와 일정의 의사 아이디가 일치하는지 확인
 			    if (nowDoctorId.value == isLoginedId) {
 			        var departmentType = document.getElementById("editEventDeptId");
