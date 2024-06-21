@@ -75,7 +75,7 @@
 										</tr>
 										<tr>
 											<th id = "exTy">진료 타입</th>
-											<%-- <td class="exType">
+											<!-- <td class="exType">
 												<c:forEach var="examination" items="${examination}" varStatus="eStatus">
 														
 														<c:if test="${status.index == eStatus.index}">
@@ -91,7 +91,7 @@
 															</c:choose>
 														</c:if>
 												</c:forEach>
-											<td> --%>
+											<td> -->
 										</tr>
 										
 									</table>
