@@ -8,13 +8,13 @@
 <mapper namespace="org.hj.mapper.ExMapper">
 
 	<!-- 로그인 -->
-	<select id="isLogin" resultType="org.hj.model.ExVO">
+	<select id="isLogin" resultType="org.hj.model.LoginVO">
 		select * from user
 		where id = #{id}
 	</select>
 
 	<!-- 로그인한 아이디 값 가져오기 -->
-	<select id="doctorIdForUpdate" resultType="org.hj.model.ExVO" parameterType="org.hj.model.ExVO">
+	<select id="doctorIdForUpdate" resultType="org.hj.model.LoginVO" parameterType="org.hj.model.LoginVO">
 		select id from user
 		where id =
 		#{id}
@@ -23,8 +23,8 @@
 	<!-- 로그인한 아이디와 같은 의사의 스케쥴표 셀렉트 -->
 	<select id="showSchedule"
 		resultType="org.hj.model.ReservationVO"
-		parameterType="org.hj.model.ExVO">
-		select * from ex
+		parameterType="org.hj.model.LoginVO">
+		select * from reservation
 		where doctorId = #{id} and active = true
 	</select>
 
@@ -32,8 +32,8 @@
 
 	<!-- 로그인한 의사의 이름 가져오기 -->
 	<select id="showTName"
-		resultType="org.hj.model.ExVO"
-		parameterType="org.hj.model.ExVO">
+		resultType="org.hj.model.LoginVO"
+		parameterType="org.hj.model.LoginVO">
 		select name from user
 		where id = #{id}
 	</select>
@@ -42,14 +42,14 @@
 	<!-- 의사가 일정 삭제하기 -->
 	<update id="deletSchedule"
 		parameterType="org.hj.model.ReservationVO">
-		update ex set active = false		
+		update reservation set active = false		
 		where no = #{no}
 	</update>
 
 	<!-- 전체 일정 가져오기 -->
 	<select id="allSchedules"
 		resultType="org.hj.model.ReservationVO">
-		select * from ex
+		select * from reservation
 		where active = true
 	</select>
 
@@ -57,7 +57,7 @@
 	<!-- 의사가 일정 추가 -->
 	<insert id="addSchedule"
 		parameterType="org.hj.model.ReservationVO">
-		INSERT INTO ex (doctorId, tName, title, birth, start,
+		INSERT INTO reservation (doctorId, tName, title, birth, start,
 		backgroundColor)
 		VALUES (#{doctorId}, #{tName}, #{title}, #{birth},
 		#{start}, #{backgroundColor})
@@ -65,7 +65,7 @@
 
 
 	<!-- 의사가 일정 추가 할 때 아이디와 매칭해서 이름 가져오기 -->
-	<select id="selectTname" resultType="org.hj.model.ExVO"
+	<select id="selectTname" resultType="org.hj.model.LoginVO"
 		parameterType="org.hj.model.ReservationVO">
 		select name from user
 		where id = #{doctorId}
@@ -73,20 +73,20 @@
 	
 	<!-- 요청받은 수정 스케줄 들고오기 -->
 	<select id="scheduleRequsestList" resultType="org.hj.model.ReservationVO" parameterType="org.hj.model.ReservationVO">
-	select * from ex
+	select * from reservation
 	where #{doctorId} = doctorId and active = false and isRequest = true and state !='rejected';
 	</select>
 	
 	<!-- 수정 요청한 의사의 이름 가져오기 -->
 	<select id="scheduleRequsestDocName" resultType="org.hj.model.ReservationVO" parameterType="org.hj.model.ReservationVO">
-	select tName ,no from ex
+	select tName ,no from reservation
 	where no = #{reservedNo} 
 	</select>
 
 	
 	<!--  의사가 스케쥴 수정 요청하기-->
 	<insert id="scheduleRequsest" parameterType="org.hj.model.ReservationVO">
-	insert into ex (doctorId, tName, title, birth, start,
+	insert into reservation (doctorId, tName, title, birth, start,
 		backgroundColor, active ,isRequest,reservedNo,state)
 		values(#{doctorId}, #{tName}, #{title}, #{birth},
 		#{start}, #{backgroundColor}, false , true, #{no}, 'pending')	
@@ -94,21 +94,21 @@
 	
 	<!-- 수정 요청한 의사가 같은 일정이 있는지 없는지 검사 -->
 	<select id="sendScheduleRequestCheck" resultType="org.hj.model.ReservationVO" parameterType="org.hj.model.ReservationVO">
-	select * from ex
+	select * from reservation
 	where doctorId = #{doctorId} and start = #{start} and  end = #{end}
 	</select>
 	
 	
 	<!-- 스케줄 수정 요청중일 때 달력에 보이는 일정 컬러 바꾸기 -->
 	<update id="scheduleRequsestColorChange" parameterType="org.hj.model.ReservationVO">
-	UPDATE ex 
+	UPDATE reservation 
     SET backgroundColor = 'red', state = 'pending'
     WHERE no = #{no};
 	</update>
 	
 	<!-- 스케줄 수정 요청을 거절하였을 때 -->	
 	<update id="rejectSchedule" parameterType="org.hj.model.ReservationVO">
-	update  ex  set state = 'rejected'
+	update  reservation  set state = 'rejected'
 	where
 	no = #{no}
 	</update>
@@ -116,7 +116,7 @@
 	<!-- 스케줄 수정 요청을 거절하였을 때 원래 일정-->
 	<update id="rejectScheduleRequest"
 		parameterType="org.hj.model.ReservationVO">
-		UPDATE ex SET
+		UPDATE reservation SET
 		state = 'rejected',
 		backgroundColor = #{backgroundColor}			
 		WHERE
@@ -126,14 +126,14 @@
 	
 	<!-- 스케줄 수정 요청을 상대방이 받았을 경우 추가된 수정 일정이 스케줄에 표시가 되게끔  -->
 	<update id="scheduleRequsestOk" parameterType="org.hj.model.ReservationVO">
-	update  ex  set active = true , state = 'accepted'
+	update  reservation  set active = true , state = 'accepted'
 	where no = #{no}
 	</update>
 	
 	<!-- 의사가 스케쥴 수정 요청을 받았을 때  기존 담당의 일정은 false로-->
 	<update id="updateSchedule"
 		parameterType="org.hj.model.ReservationVO">
-		UPDATE ex SET
+		UPDATE reservation SET
 		state = 'accepted',
 		backgroundColor = #{backgroundColor},	
 		active = false
@@ -142,8 +142,8 @@
 	</update> 
 	
 <!-- 의사가 스케쥴 수정할 때 진료과를 선택 했을 때 해당 과의 의사 이름 받아오기 -->
-	<select id="doctorList" resultType="org.hj.model.ExVO"
-		parameterType="org.hj.model.ExVO">
+	<select id="doctorList" resultType="org.hj.model.LoginVO"
+		parameterType="org.hj.model.LoginVO">
 		select name,id from user
 		where userType = #{userType}
 	</select>
