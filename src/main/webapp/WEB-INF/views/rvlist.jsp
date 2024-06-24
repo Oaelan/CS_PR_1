@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>예약확인1234</title>
+<title>예약확인</title>
 <link rel="stylesheet" href="../resources/CSS/header.css">
 <link rel="stylesheet" href="../resources/CSS/footer.css">
 <link rel="stylesheet" href="../resources/CSS/rvlist.css">
