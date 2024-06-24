@@ -219,7 +219,7 @@ input[type="radio"]:checked + .rButton {
 						<input type = "hidden" id = "patientBirth" value = "${birth}">
 						<ul id="rv3">
 								<li><a href="" role="button">환자정보확인</a></li>
-								<li><a href="rvlist.html" role="button">최근예약</a></li>
+								<li><a href="나중에넣기" role="button">최근예약</a></li>
 						</ul>
 						<br><br>
 						<div>

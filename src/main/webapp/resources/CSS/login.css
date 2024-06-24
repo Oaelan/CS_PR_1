@@ -53,6 +53,7 @@ input:focus {
 #box2{
 	position: relative;
 	bottom: 20px;
+	margin-bottom: 20px;
 }
 #user{
 	position: relative;
@@ -68,10 +69,10 @@ input:focus {
 
 #link {
 	position: relative;
-	left: 400px;
-	bottom: 10px;
+	left: 200px;
 	font-size: 12px;
 	text-decoration: none;
+	color: #BDBDBD;
 }
 
 #login {
@@ -81,17 +82,20 @@ input:focus {
 	width: 417px;
 	height: 40px;
 	position: relative;
-	left: 40px;
-	bottom: 15px;
 	font-size: 15px;
 	border-radius: 5px;
+	margin-top: 10px;
+}
+
+.text {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 }
 
 p {
 	color: #BDBDBD;
 	font-size: 10px;
-	position: relative;
-	left: 50px;
-	top: 20px;
 	font-family: 나눔고딕;
+	margin: 0px 50px 0px 50px;
 }
