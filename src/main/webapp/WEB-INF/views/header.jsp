@@ -13,7 +13,12 @@
 	<nav>
 		<div class="menu">
 		<ul>
-			<li><a href="/">홈</a></li>
+			<li>
+				<form method="post" action="/">
+					<button type="submit">홈</button>
+				</form>
+			</li>
+			<!-- <li><a href="/">홈</a></li> -->
 			<li><a href="">진료안내</a></li>
 			<li><a href="">이용안내</a></li>
 			<li><a href="">병원소개</a></li>

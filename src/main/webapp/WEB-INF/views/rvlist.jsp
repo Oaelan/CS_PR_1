@@ -13,27 +13,7 @@
 </head>
 <body>
 	<div class="entire">
-		<header>
-			<img id="hspt" src="../resources/img/hospital.PNG" onclick="main()">
-			<div>
-				<ul>
-					<li><a href="/login">로그인</a></li>
-					<li><a href="/sign">회원가입</a></li>
-				</ul>
-			</div>
-		</header>
-		<nav>
-			<div class="menu">
-				<ul>
-					<li><a href="/hospital">홈</a></li>
-					<li><a href="">진료안내</a></li>
-					<li><a href="">이용안내</a></li>
-					<li><a href="">병원소개</a></li>
-					<li><a href="">문의</a></li>
-				</ul>
-			</div>
-		</nav>
-
+		<jsp:include page="header.jsp"></jsp:include>
 		 <div class="container">
         <div class="content1">
             <div class="text">
@@ -91,10 +71,6 @@
         </div>
     </div>
 	</div>
-	<footer>
-		<pre>주소 : 03080 서울특별시 종로구 대학로 101(연건동 28)		대표전화 : 1588-5700		홈페이지 의견접수</pre>
-		<pre>COPYRIGHT 2024 SEOUL NATIONAL UNIVERSITY HOSPITAL. ALL RIGHTS RESERVED</pre>
-	</footer>
 	<script type="text/javascript" src="../resources/JS/main.js"></script>
 	
 </body>
