@@ -89,10 +89,19 @@
 					오늘도 좋은 하루 보내시고<br>
 					<strong>건강을 기원</strong>합니다.<br><br>
 					<div id="rv">
-					<ul id="rv4">
-							<li><a href="/reservation/check" role="button">예약확인/취소</a></li>
-							<li><a href="" role="button">진료이력조회</a></li>
-					</ul>
+					
+					<c:if test="${userType == 1}">
+						<ul id="rv4">
+							<li><a href="/rvlist" role="button">예약확인/취소</a></li>
+						</ul>
+					</c:if>
+					
+					
+					<c:if test="${userType > 1}">					
+						<ul id="rv4">
+								<li><a href="/calender" role="button">내 일정</a></li>
+						</ul>
+					</c:if>
 					</div>
 				</div>
 			</c:if>

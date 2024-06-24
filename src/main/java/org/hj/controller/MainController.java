@@ -20,22 +20,19 @@ public class MainController {
 	ExService es;
 	
 	// 로그인 서버
-	@PostMapping("/calender")
+	@GetMapping("/calender")
 	public String login(HttpSession session, ExVO evo, Model model) {
 		System.out.println("로그인서버");
-		if (es.isLogin(evo) != null) {
-			session.setAttribute("id", es.isLogin(evo).getId());
-			session.setAttribute("name", es.showTName(evo).getName());
-			model.addAttribute(session.getAttribute("id"));
-			model.addAttribute(session.getAttribute("name"));
-			System.out.println("로그인 성공");
+		if (session.getAttribute("userType") != null) {
+			
+			System.out.println("의사 로그인 성공");
 			// 세션에 아이디 값 저장
 			// redirect 다른 컨트롤러에있는 맵핑값으로 이동한다!!!!
 			// 제발 잊어버리지마..
 			return "calender";
 
 		} else {
-			System.out.println("로그인 실패");
+			System.out.println("의사 로그인 실패");
 			return "login";
 		}
 
