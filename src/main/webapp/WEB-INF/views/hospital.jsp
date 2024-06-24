@@ -41,7 +41,7 @@
 					<div id="rv">
 						<ul id="rv1">
 							<li><a href="/reservation" role="button">진료예약</a></li>
-							<li><a href="/reservation/check" role="button">예약확인</a></li>
+							<li><a href="/rvlist" role="button">예약확인</a></li>
 						</ul>
 					</div>
 				</div>
@@ -82,8 +82,7 @@
 			
 			
 		<div id="content4">
-			
-			<c:if test="${id != null}" >
+			<c:if test="${loginId != null}" >
 				<div id="wrap4">
 					<strong>${name}</strong>
 					<a href="logout">로그아웃</a><Br><br>
@@ -98,7 +97,7 @@
 				</div>
 			</c:if>
 				
-			<c:if test="${id == null}">
+			<c:if test="${loginId == null}">
 				<div id="wrap4">
 					<ul id="sign">
 						<li id="log"><a href="/login">로그인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>

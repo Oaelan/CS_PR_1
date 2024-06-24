@@ -2,14 +2,14 @@ package org.hj.mapper;
 
 import java.util.ArrayList;
 
-import org.hj.model.ExVO;
+import org.hj.model.LoginVO;
 import org.hj.model.ReservationVO;
 
 public interface ExMapper {
 
-	public  ArrayList<ExVO> showData();
+	public  ArrayList<LoginVO> showData();
 	
-	public  ArrayList<ReservationVO> showSchedule(ExVO evo);
+	public  ArrayList<ReservationVO> showSchedule(LoginVO lvo);
 	
 	public void deletSchedule(ReservationVO rvo);
 	
@@ -17,19 +17,19 @@ public interface ExMapper {
 	
 	public void addSchedule(ReservationVO rvo);
 	
-	public  ExVO selectTname(ReservationVO rvo);
+	public  LoginVO selectTname(ReservationVO rvo);
 
-	public  ArrayList<ExVO> doctorList(ExVO evo);
+	public  ArrayList<LoginVO> doctorList(LoginVO lvo);
 	
 	public void updateSchedule(ReservationVO rvo);
 	
 	public void scheduleRequsestOk(ReservationVO rvo);
 	
-	public ExVO showTName(ExVO evo);
+	public LoginVO showTName(LoginVO lvo);
 	
-	public ExVO isLogin(ExVO evo);
+	public LoginVO isLogin(LoginVO lvo);
 	
-	public ExVO doctorIdForUpdate(ExVO evo);
+	public LoginVO doctorIdForUpdate(LoginVO lvo);
 	
 	public void scheduleRequsest(ReservationVO rvo);
 	

@@ -29,11 +29,18 @@ public class Main1Controller {
 
 	// 메인 페이지로 이동
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String goMain() {		
-		System.out.println("메인 페이지로 이동");
-		return "hospital";
+	public String goMain() {				
+			System.out.println("로그인 전 메인 페이지로 이동");
+			// 세션 값 가져오기
+			return "hospital";	
 	}
 	
+//	// 로그인 후 메인 페이지로 이동
+//		@RequestMapping(value = "/", method = RequestMethod.POST)
+//		public String goMain2(HttpSession session) {
+//				System.out.println("로그인 후 메인 페이지로 이동");
+//				return "hospital";	
+//		}
 	
 		
 	/*// 환자 예약 페이지로 이동
@@ -62,18 +69,19 @@ public class Main1Controller {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginSuccess(HttpSession session, LoginVO lvo, Model model) {
 		System.out.println(ls.login(lvo));
-		session.setAttribute("loginId", (ls.login(lvo)).getId());
-		session.setAttribute("name", (ls.login(lvo)).getName());
-		model.addAttribute("id",session.getAttribute("loginId"));
-		model.addAttribute("name",session.getAttribute("name"));
-		System.out.println(model);
+
+//		model.addAttribute("id",session.getAttribute("loginId"));
+//		model.addAttribute("name",session.getAttribute("name"));
+		
 		// 로그인 페이지 이동
-		if (session.getAttribute("loginId") == null) {
+		if (ls.login(lvo) == null) {
 			System.out.println("아이디 없어서 다시 로그인 페이지로");
 			return "login";
 		} 
 		
 		else {
+			session.setAttribute("loginId", (ls.login(lvo)).getId());
+			session.setAttribute("name", (ls.login(lvo)).getName());
 			//로그인 후 환자일 경우 메인 페이지
 			if(((ls.login(lvo)).getUserType()).equals("1")) {
 				System.out.println("환자" + (ls.login(lvo)).getUserType());				
@@ -135,6 +143,9 @@ public class Main1Controller {
 			//			model.addAttribute("birth",ls.login(lvo).getBirth());
 			return "reservation";
 		}
+		
+		
+	// 예약확인 페이지로 이동
 		
 		
 		
