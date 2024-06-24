@@ -71,11 +71,11 @@ public class ReserveController {
         return ResponseEntity.ok(docName);
     }
     
-    // 진료타입 받아오는 컨트롤러
+   /* // 진료타입 받아오는 컨트롤러
     @GetMapping("/getExType")
     public String selectBack(@RequestParam("no") String no) {
         System.out.println("진료타입 받아오는 컨트롤러");
         return rs.selectBack(no);
-    }
+    }*/
     
 }

@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+html, body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.entire {
+    background-color: white;
+    height: 1000px;
+    font-family: 나눔고딕;
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.title {
+	position: relative;
+	right: 300px;
+	padding: 30px;
+	padding-top: 10px;
+}
+
+h1 {
+	position: relative;
+    top: 50px;
+    left: 50px;
+    right: 300px;
+    padding: 30px;
+    font-family: 나눔고딕;
+}
+
+.content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 500px;
+	height: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.text {
+	color: gray;
+}
+
+.content1 {
+	width: 800px;
+	height: 200px;
+	border-top: 3px solid #2763ba;
+	border-bottom: 1px solid lightgray;
+	margin-top: 50px;
+}
+
+.radio {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-top: 70px;
+	padding-left: 50px;
+	height: 50px;
+}
+
+.radio-container {
+	display: inline-block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 22px;
+	user-select: none;
+}
+
+.radio-container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #ccc;
+	border-radius: 50%;
+}
+
+.radio-container input:checked ~ .checkmark {
+	background-color: #2196F3;
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.radio-container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.radio-container .checkmark:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+p {
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+.btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	padding-top: 50px;
+	gap: 20px;
+}
+
+.btn1, .btn2 {
+	width: 150px;
+	height: 50px;
+	background-color: white;
+	border: 1px solid gray;
+	font-size: 20px;
+	font-weight: bold;
+}

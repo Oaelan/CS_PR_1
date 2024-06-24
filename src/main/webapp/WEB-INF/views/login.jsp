@@ -9,7 +9,7 @@
 </style>
 <link rel="stylesheet" href="../resources/CSS/header.css">
 <link rel="stylesheet" href="../resources/CSS/footer.css">
-<link rel="stylesheet" href="../resources/CSS/login.css">
+<link rel="stylesheet" href="../resources/CSS/login.css?ver=1">
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -34,10 +34,13 @@
 					</tr>
 				</table>
 				<input type = "submit" id="login" value = "로그인">
+				<div class="text">
 				<p>아직 계정이 없으신가요?</p>
-				<a href="patient_join" id="link">환자 회원가입</a>
-				<a href="doctor_join" id="link">의사 회원가입</a>
+				<a href="patient_join" id="link">회원가입</a>
+				</div>
 			</div>
+				
+				
 		</form>
 	</div>
 		<jsp:include page="footer.jsp"></jsp:include>

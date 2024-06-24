@@ -8,9 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>서울대학교병원</title>
-<link rel="stylesheet" href="../resources/CSS/hospital.css">
-<link rel="stylesheet" href="../resources/CSS/header.css">
-<link rel="stylesheet" href="../resources/CSS/LoginSuccess.css">  <!-- ?ver=1 붙이면 css 적용 빨라짐  -->
+<link rel="stylesheet" href="../resources/CSS/hospital.css?ver=2">	
+<link rel="stylesheet" href="../resources/CSS/header.css?ver=1">
+<link rel="stylesheet" href="../resources/CSS/LoginSuccess.css?ver=1">  <!-- ?ver=1 붙이면 css 적용 빨라짐  -->
+<style type="text/css">
+
+</style>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -38,12 +41,7 @@
 					<div id="rv">
 						<ul id="rv1">
 							<li><a href="/reservation" role="button">진료예약</a></li>
-							<li>
-								<a href="/rvlist" role="button">
-									<input type = "hidden" name = "title" value = "${title}"> 
-									<input type = "hidden" name = "birth" value = "${birth}">
-									예약확인</a>
-							</li>
+							<li><a href="/reservation/check" role="button">예약확인</a></li>
 						</ul>
 					</div>
 				</div>
@@ -93,7 +91,7 @@
 					<strong>건강을 기원</strong>합니다.<br><br>
 					<div id="rv">
 					<ul id="rv4">
-							<li><a href="/rvlist" role="button">예약확인/취소</a></li>
+							<li><a href="/reservation/check" role="button">예약확인/취소</a></li>
 							<li><a href="" role="button">진료이력조회</a></li>
 					</ul>
 					</div>
@@ -103,11 +101,8 @@
 			<c:if test="${id == null}">
 				<div id="wrap4">
 					<ul id="sign">
-						<li id="log"><a
-							href="login.html">
-								로그인&nbsp;&nbsp;&nbsp;</a></li>
-						<li><a
-							href="sign.html">&nbsp;&nbsp;&nbsp;회원가입</a></li>
+						<li id="log"><a href="/login">로그인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+						<li><a href="/patient_join">&nbsp;&nbsp;&nbsp;회원가입</a></li>
 					</ul>
 				</div>
 				<form action="login" method="post">
@@ -115,7 +110,7 @@
 						<input type="text" name="id" placeholder="아이디"><br> 
 						<input type="password" name="password" placeholder="비밀번호"><br>
 						<ul id="forgot">
-							<li><a href="#">아이디/비밀번호 찾기</a></li>
+							<li><a href="/Find_ID">아이디/비밀번호 찾기</a></li>
 						</ul>
 						<input type="submit" id="loginBtn" value="로그인">
 					</div>

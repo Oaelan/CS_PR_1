@@ -22,10 +22,10 @@ html, body {
 #main {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 #main1 img {
-	margin-left: 110px;
 }
 
 
@@ -261,37 +261,41 @@ input::placeholder {
 }
 
 #log a {
-    margin-right: 10px; /* 로그인, 회원가입 링크와 입력 필드 사이 여백 조절 */
     color: gray;
     text-decoration: none;
 }
 
 #box {
 	position: relative;
+	margin-left: 5px;
+	margin-top: 30px;
 }
 
-
 #sign {
-    margin-top: 10px; /* ul 요소 아래 여백 추가 */
-    padding-left: 30px;
+    margin-top: 20px; /* ul 요소 아래 여백 추가 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
 }
 
 #sign>li{
 	display: inline;
 	font-size: 16px;
-	position: relative;
 	font-family: 나눔고딕;
+	margin-right: 10px;
 }
 
 #sign>li>a{
 	color: gray;
     text-decoration: none;
+    margin-left: 0px;
 }
 
 #forgot {
 	position: relative;
 	float: right;
-	left: 8px;
+	margin-right: 10px;
 }
 #forgot>li>a{
 	text-decoration: none;
