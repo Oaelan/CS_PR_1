@@ -203,5 +203,11 @@ public class Main1Controller {
 		System.out.println(rs.selectReserveInfo(rvo));
 		return "rvlist";
 	}
+	
+	// 예약 완료 화면으로 이동
+		@RequestMapping(value = "/rvfinish", method = RequestMethod.GET)
+		public String rvfinish() {
+			return "/rvfinish";
+		}
 		
 }
