@@ -419,65 +419,63 @@ a {
 	
 
 	
-	// Save Event Button click handler
-	document.getElementById('saveEventBtn').addEventListener('click', function() {
-		var title = document.getElementById('eventTitle').value;
-		var birth = document.getElementById('eventBirth').value;
-		var dateStr = document.getElementById('eventDate').value;
-		var timeStr = document.getElementById('eventTime').value;
-		// Date 객체 생성
-		var dateTimeStr = dateStr + 'T' + timeStr; // "YYYY-MM-DDTHH:MM:SS" 형식
-		// 수술 / 일반 진료 타입
-		var eventType = document.querySelector('input[name="backgroundColor"]:checked').value;
-		// 추가된 일정의 정보
-		var addReservation = {
-			title: title,
-			start: dateTimeStr,
-			backgroundColor: eventType,
-			birth: birth
-		};
-		//console.log(JSON.stringify(addReservation))
-		// JavaScript Date 객체로 변환 (브라우저의 지역 시간대 사용)
-		var date = new Date(dateTimeStr);
-		// 유효한 날짜인지 확인	
-		if (title && birth && dateStr && timeStr && eventType){ 		
-				calendar.addEvent({
-					title: title,
-					start: dateTimeStr,
-					backgroundColor: eventType,
-				});
-		
-				// 서버로 데이터 전송
-				$.ajax({
-					type: 'POST',
-					url: '/api/saveEvent', // 저장할 데이터를 처리하는 서버의 엔드포인트
-					data: JSON.stringify(addReservation), // JSON 형태로 데이터 전송
-					contentType: 'application/json',
-					success: function(response) {
-						console.log('Event saved successfully:', response);
-						$('#addEventModalOk').modal('show');
-					},
-					error: function(err) {
-						console.error('Error saving event:', err);
-						$('#invalidEventModal').modal('show');
-					}
-				});
-				
-				var addEventModal = bootstrap.Modal.getInstance(document.getElementById('addEventModal'));
-				addEventModal.hide();
-				// 입력 필드 초기화
-				document.getElementById('eventTitle').value = '';
-				document.getElementById('eventDate').value = '';
-				document.getElementById('eventTime').value = '';
-				document.getElementById('eventBirth').value = '';
-				nowDoctorId.value='';
-				
-				$('input[name="eventType"]').prop('checked', false); // 라디오 버튼 초기화
-			
-		}else{
-		    $('#invalidEventModal').modal('show')
-		}
-	}); 
+	 // 일정 추가하는 버튼
+    $('#saveEventBtn').off('click').on('click', function() {
+        var title = $('#eventTitle').val();
+        var birth = $('#eventBirth').val();
+        var dateStr = $('#eventDate').val();
+        var timeStr = $('#eventTime').val();
+        
+        // Date 객체 생성
+        var dateTimeStr = dateStr + 'T' + timeStr; // "YYYY-MM-DDTHH:MM:SS" 형식
+        
+        // 수술 / 일반 진료 타입
+        var eventType = $('input[name="backgroundColor"]:checked').val();
+        
+        // 추가된 일정의 정보
+        var addReservation = {
+            title: title,
+            start: dateTimeStr,
+            backgroundColor: eventType,
+            birth: birth
+        };
+        
+        // JavaScript Date 객체로 변환 (브라우저의 지역 시간대 사용)
+        var date = new Date(dateTimeStr);
+                         
+            // 서버로 데이터 전송
+            $.ajax({
+                type: 'POST',
+                url: '/api/saveEvent', // 저장할 데이터를 처리하는 서버의 엔드포인트
+                data: JSON.stringify(addReservation), // JSON 형태로 데이터 전송
+                contentType: 'application/json',
+                success: function(response) {
+                    console.log('Event saved successfully');
+                    
+                    // 유효한 날짜인지 확인	
+                    
+                     calendar.addEvent(addReservation);	
+                    $('#addEventModal').modal('hide');
+                    $('#addEventModalOk').modal('show');
+                    
+                    
+                },
+                error: function(err) {
+                    console.error('Error saving event:', err);
+                    $('#addEventModal').modal('hide');
+                    $('#invalidEventModal').modal('show');
+                }
+            });
+                                 
+            // 입력 필드 초기화
+            $('#eventTitle').val('');
+            $('#eventDate').val('');
+            $('#eventTime').val('');
+            $('#eventBirth').val('');
+            $('#nowDoctorId').val('');
+            $('input[name="backgroundColor"]').prop('checked', false); // 라디오 버튼 초기화
+            
+    });
 	
 	// 일정 조회
 	document.getElementById('selectDate').addEventListener('change', function() {
@@ -571,17 +569,20 @@ a {
 			$('#confirmModal').modal('show');
 			
 			// 삭제 버튼을 눌렀을 경우 
-				document.getElementById('modal-delete-btn').addEventListener('click', function() {			    
-				    $('#confirmModal').modal('hide');
-				    
-				    if(info.event.backgroundColor == "red"){
-				         $('#requestStatusModal').modal('show');
-				    }else{
-				        // 삭제 여부 한번 더 묻기
-					    $('#deleteModal').modal('show');
-				    }
 				
-				});
+		    // 삭제 버튼을 눌렀을 경우 이벤트 리스너 설정
+		    $('#modal-delete-btn').off('click').on('click', function() {			    
+        		$('#confirmModal').modal('hide');
+        
+       		 if(info.event.backgroundColor == "red") {
+            		$('#requestStatusModal').modal('show');
+       	 	} else {
+		            // 삭제 여부 한번 더 묻기
+		            $('#deleteModal').modal('show');
+        		}
+   			 });
+
+
 			
 			
 			
@@ -643,17 +644,25 @@ a {
 			   
 				 // JavaScript Date 객체로 변환
 			    var jsDate = new Date(info.event.start);
-			 	// 원하는 포맷으로 시간 변환 (예시: YYYY-MM-DD HH:MM:SS)
-			    var formattedDate = jsDate.toLocaleString('en-US', { timeZone: 'Asia/Seoul' });
-			    
-			    var updateStart = jsDate.toISOString().slice(0, 19).replace('T', ' ');
-			    console.log(info.event.start);   			
-			    console.log(updateStart);
+				 
+			  
+				 
+			 	// 날짜 문자열 생성
+			    var dateString = jsDate.toLocaleDateString('sv-SE')//split('T')[0];
+			    // 시간 문자열 생성
+			    var timeString = jsDate.toLocaleTimeString('en-GB')//split(' ')[0];
+
+				// 원하는 포맷으로 시간 변환 (예시: YYYY-MM-DD HH:MM:SS)
+			    var formattedDate =	dateString +' '+timeString;
+			   		console.log(jsDate)
+			   		console.log(dateString)
+			    	console.log(timeString)
+						  			 				   	    					  
 			    var updateSchedule = {
 			        no: info.event.extendedProps.no,
 			        birth: info.event.extendedProps.birth,
 			        title: info.event.title,
-			        start: updateStart,
+			        start: formattedDate,
 			        doctorId: selectedODoctorId,
 			        tName: selectedODoctorName,
 			        backgroundColor: selectedBackgroundColor,
