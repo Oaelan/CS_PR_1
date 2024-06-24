@@ -29,7 +29,7 @@
 	<select id = "selectReserveInfo" parameterType="org.hj.model.ReservationVO" resultType="org.hj.model.ReservationVO">
 		select no, tName,start,backgroundColor from reservation
 		where  title = #{title} and birth = #{birth} and active = true
-	</select>  
+	</select> 
 	
 	<!-- 진료타입 가져옴 -->
 	<select id = "selectBack" parameterType="org.hj.model.ReservationVO" resultType="org.hj.model.ReservationVO">

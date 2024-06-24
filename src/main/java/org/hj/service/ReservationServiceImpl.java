@@ -40,7 +40,9 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public String selectBack(String no) {
+    public List<ReservationVO> selectBack(int no) {
+    	System.out.println(no);
+    	System.out.println("백서비스: "+rm.selectBack(no));
     	return rm.selectBack(no);
     }
 }

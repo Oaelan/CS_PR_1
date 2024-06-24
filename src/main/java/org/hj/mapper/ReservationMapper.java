@@ -14,5 +14,5 @@ public interface ReservationMapper {
 	
 	public List<ReservationVO> selectReserveInfo(ReservationVO rvo);
 
-	public String selectBack(String no);
+	public List<ReservationVO> selectBack(int no);
 }
