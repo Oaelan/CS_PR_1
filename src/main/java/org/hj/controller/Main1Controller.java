@@ -57,6 +57,13 @@ public class Main1Controller {
 		return "login";
 	}
 	
+	// 마이페이지로 이동
+		@RequestMapping(value = "/MyPage", method = RequestMethod.GET)
+		public String MyPage() {
+			System.out.println("마이페이지로 이동");
+			return "MyPage";
+		}
+		
 	/*// 예약 정보 저장
 	@RequestMapping(value = "/finish", method = RequestMethod.POST)
 	public String putReserveInfo(ReservationVO rvo) {
@@ -82,6 +89,8 @@ public class Main1Controller {
 		else {
 			session.setAttribute("loginId", (ls.login(lvo)).getId());
 			session.setAttribute("name", (ls.login(lvo)).getName());
+			session.setAttribute("userType", (ls.login(lvo)).getUserType());
+			
 			//로그인 후 환자일 경우 메인 페이지
 			if(((ls.login(lvo)).getUserType()).equals("1")) {
 				System.out.println("환자" + (ls.login(lvo)).getUserType());				
@@ -91,7 +100,7 @@ public class Main1Controller {
 			//로그인 후 의사일 경우 스케줄 관리 페이지
 			else {
 				System.out.println("의사" + (ls.login(lvo)).getUserType());
-				return "calender";	
+				return "hospital";	
 			}
 		}
 	}
