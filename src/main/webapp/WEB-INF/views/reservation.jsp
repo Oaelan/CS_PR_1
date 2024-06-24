@@ -508,7 +508,7 @@ $(document).ready(function() {
             data: JSON.stringify(reserveInfo),
             success: function(response) {
                 console.log('전송 성공:', response);
-                // 필요에 따라 추가 작업 수행
+                window.location.href = '/rvfinish';
             }
         });
         reserveInfo = null;
