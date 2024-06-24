@@ -586,7 +586,7 @@ a {
 			
 			
 			
-				$('#delete-event-btn').off('click').on('click', function() {
+				$('#delete-event-btn').off('click').on('click', function() {				  				    
 				    if(info.event.extendedProps.doctorId == document.getElementById("doctorLoginId").value) {
 				        $.ajax({
 				            type: 'POST',
@@ -777,9 +777,9 @@ a {
 				</div>
 				<div>
 					<lable>아이디: </lable>
-					<b>${id}</b>
+					<b>${loginId}</b>
 				</div>
-				<input type="hidden" id="doctorLoginId" value="${id}">
+				<input type="hidden" id="doctorLoginId" value="${loginId}">
 			</div>
 			<div id="scheduleView">
 				<label id="scheduleViewTitle">일정 조회하기</label> <input type="date" id="selectDate">
