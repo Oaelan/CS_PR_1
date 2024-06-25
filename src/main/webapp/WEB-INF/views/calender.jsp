@@ -81,8 +81,8 @@
 }
 
 #confirmChangeSch {
-	padding-bottom:10px;
-	gap:20px;
+	padding-bottom: 10px;
+	gap: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -96,9 +96,10 @@
 #scheduleViewTitle, #confirmChangeSchTitle {
 	font-weight: bold;
 }
-#requestChangeschs{
-display: flex;
-gap:5px;
+
+#requestChangeschs {
+	display: flex;
+	gap: 5px;
 }
 /*  공휴일 이벤트 스타일 
 .fc-event-holiday {
@@ -401,8 +402,16 @@ a {
 		document.getElementById('editEventDate').value = eventData.date;
 		document.getElementById('editEventBirth').value = eventData.birth;
 		nowDoctorId.value = eventData.id;
-
 		
+		if(eventData.tName != null){
+		    
+		    document.getElementById('editEventNowTname').value = eventData.tName;
+		    console.log(eventData.tName)
+		    
+		}else{
+		    document.getElementById('editEventNowTname').value = document.getElementById('eventTname').value;
+		    eventData.tName = document.getElementById('eventTname').value;		    
+		}								
 		// 진료유형에 따라 라디오 버튼 선택 상태를 설정합니다.
 	    var surgeryRadio = document.getElementById('editEventTypeSurgery');
 	    var generalRadio = document.getElementById('editEventTypeRegular');
@@ -415,7 +424,7 @@ a {
 	        generalRadio.checked = true;
 	    }
 
-		document.getElementById('editEventNowTname').value = eventData.tName;
+	    console.log(eventData)
 	}
 	
 
@@ -557,9 +566,7 @@ a {
 				backgroundColor: info.event.backgroundColor,				
 				// 기타 등등 일정에 관련된 정보들을 가져올 수 있습니다.
 			};
-			
-			//console.log(eventData)
-			
+								
 			var formattedStartDate = info.event.start.toISOString().slice(0, 10); // 예: YYYY-MM-DD 형식
 			// '의사'라는 단어가 포함되어 있는지 확인
 			var isDoctor = info.event.title.includes('의사');
@@ -626,7 +633,8 @@ a {
 					$('#editEventModal').modal('show');
 					 console.log(info.event.backgroundColor)
 					// 모달 내용을 동적으로 변경할 수 있도록 전달한 정보를 모달에 채워 넣습니다.					
-					fillEditModal(eventData);	
+					fillEditModal(eventData);
+					
 			    }
 							
 				});
@@ -672,15 +680,21 @@ a {
 				
 			    // 로그인한 의사와 일정의 의사 아이디가 일치하는지 확인
 			    if (nowDoctorId.value == isLoginedId) {
+			       
+			        // 진료과 선택
 			        var departmentType = document.getElementById("editEventDeptId");
+			        // 의사 선택 
 			        var chooseDoc = document.getElementById("editEventTname");
 			        //console.log(departmentType.value)
 				    //console.log(chooseDoc.value)
 			        // 진료과와 담당 의사가 선택되었는지 확인
-			        if (departmentType.value == "0" && chooseDoc.value == "0") {
+			        if (departmentType.value == "0" || chooseDoc.value == "0") {
 			            $('#selectDoctorModal').modal('show'); // 선택 모달 띄우기
-			        } else {
-			            // 수정 요청 보내기 전에 검증 과정 추가
+			            
+			        } 
+			        else {
+			            
+			            // 수정 요청 보내기 전에 검증 과정 추가(요청을 받는 의사가 같은날짜 같은 시간대에 일정이 있다면 요청 불가)			           
 			            $.ajax({
 			                type: 'POST',
 			                url: '/api/sendScheduleRequestCheck',
@@ -709,13 +723,15 @@ a {
 			                }
 			            });
 
-			            // 진료과 선택 초기화
-			            departmentType.value = "0";
-			            // 담당 의사 선택 초기화
-			            chooseDoc.value = "0";
-			        }
-			    } else {
-			        $('#selectDoctorModal').modal('show'); // 선택 모달 띄우기
+			            // 진료과 선택 초기화			            			            
+			            departmentType.selectedIndex = "0";
+			            // 담당 의사 선택 초기화			           
+			            chooseDoc.selectedIndex = "0";
+			        } 
+			    }
+			    else {
+			        // 수정 요청전 빈칸 제대로 채워 넣으라는
+			        $('#refreshModal').modal('show'); 
 			    }
 			});
 
@@ -768,7 +784,7 @@ a {
 }); </script>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<div id="shall">
 		<div id='loginInfoShall'>
 			<div id='loginInfo'>
@@ -788,8 +804,7 @@ a {
 			</div>
 			<div id="confirmChangeSch">
 				<label id="confirmChangeSchTitle">일정 변경 요청</label>
-				<div class="requestChangeschs">									
-				</div>			
+				<div class="requestChangeschs"></div>
 			</div>
 		</div>
 		<div id='calendar'></div>
@@ -878,6 +893,9 @@ a {
 							<label for="eventDate" class="form-label">시간</label> <input type="time" class="form-control" id="eventTime">
 						</div>
 						<div class="mb-3">
+							<label for="eventTname" class="form-label"></label> <input type="hidden" class="form-control" id="eventTname" value= "${name}">
+						</div>
+						<div class="mb-3">
 							<label class="form-label">일정 유형</label><br>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="backgroundColor" id="eventTypeSurgery" value="green"> <label class="form-check-label" for="eventTypeSurgery">수술</label>
@@ -933,7 +951,7 @@ a {
 							<label for="editEventDate" class="form-label">날짜</label> <input readonly type="date" class="form-control" id="editEventDate">
 						</div>
 						<div class="mb-3">
-							<label for="editEventTime" class="form-label">시간</label> <input readonly  type="time" class="form-control" id="editEventTime">
+							<label for="editEventTime" class="form-label">시간</label> <input readonly type="time" class="form-control" id="editEventTime">
 						</div>
 						<div class="mb-3">
 							<label for="editEventBirth" class="form-label">환자 생년월일</label> <input readonly type="date" class="form-control" id="editEventBirth">
@@ -1063,9 +1081,9 @@ a {
 				<div class="modal-header">
 					<h5 class="modal-title" id="selectDoctorModalLabel">진료과와 바꿀 담당의를 선택해주세요</h5>
 				</div>
-				<div class="modal-body">		
+				<div class="modal-body">
 					<p>아무곳이나 클릭하여 확인창을 닫아주세요.</p>
-				</div>		
+				</div>
 			</div>
 		</div>
 	</div>
@@ -1108,7 +1126,6 @@ a {
 		</div>
 	</div>
 	<!-- 모달 창 열기 스크립트 (생략) -->
-	
 	<!-- 수정 요청시 상대 의사가 동일한 일정이 있을 경우 -->
 	<div id="scheduleConflictModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="scheduleConflictModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
@@ -1169,8 +1186,23 @@ a {
 			</div>
 		</div>
 	</div>
+	<!-- 페이지 새로고침 후 시도해주세요 모달 -->
+	<div class="modal fade" id="refreshModal" tabindex="-1" aria-labelledby="refreshModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="refreshModalLabel">알림</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">진료과와 의사를 선택했는지 확인하거나 페이지를 새로고침 후 시도해주세요.</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
