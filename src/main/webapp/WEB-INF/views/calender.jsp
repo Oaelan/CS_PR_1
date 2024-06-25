@@ -965,10 +965,18 @@ a {
 						<div class="mb-3">
 							<label for="editEventDeptId" class="form-label">진료과 선택</label> <select class="form-control" id="editEventDeptId">
 								<option disabled selected value="0">진료과</option>
-								<option value="2">외과</option>
-								<option value="3">내과</option>
-								<option value="4">정형외과</option>
-								<option value="5">정신과</option>
+								<option value="2">호흡기내과</option>
+			                    <option value="3">순환기내과</option>
+			                    <option value="4">소화기내과</option>
+			                    <option value="5">혈액종양내과</option>
+			                    <option value="6">내분비대사내과</option>
+			                    <option value="7">알레르기내과</option>
+			                    <option value="8">신장내과</option>
+			                    <option value="9">감염내과</option>
+			                    <option value="10">류마티스내과</option>
+			                    <option value="11">내과(일반)</option>
+			                    <option value="12">내과</option>
+			                    <option value="13">외과</option>
 								<!-- 추가 과를 여기에 추가 -->
 							</select>
 						</div>
@@ -1149,7 +1157,7 @@ a {
 					<h5 class="modal-title" id="notYourScheduleModalLabel">알림</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body">해당 일정의 담당자가 아닙니다.</div>
+				<div class="modal-body">해당 일정의 담당자가 아닙니다. 만약 일정을 추가했다면 새로고침 후 다시 시도해주세요.</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
 				</div>
