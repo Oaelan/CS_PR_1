@@ -324,7 +324,7 @@ var selectedDoctorId;
 var docName;
         
 $(document).ready(function() {
-    // 사용자 유형 변경 이벤트 핸들러
+    //의사 유형 변경 이벤트 핸들러
     $('.btn-check').change(function() {
         var userType = $(this).val();
         $.ajax({
@@ -342,7 +342,11 @@ $(document).ready(function() {
                     reserveInfo += 
                         '<div class="radio-container">'
                             +'<img src="../resources/img/doctor.PNG">'
-                            +'<input id='+ user.id +'  class = "doctors" type="radio" name="tName" value="' + user.id + '">'
+                            +'<input id='+ user.id +'  
+                            	class = "doctors" 
+                            	type="radio" 
+                            	name="tName" 
+                            	value="' + user.id + '">'
 	                        +'<div class="op1">' 
 	                            +'<div class="inform">'
 	                                +'<b>'+ user.name +'</b><br>'
@@ -383,7 +387,7 @@ $(document).ready(function() {
 	                    	     	}).on("changeDate", function(e) {
 	                    	     		// e.date 객체에서 연도, 월, 일 추출
 	                    	             var year = e.date.getFullYear();
-	                    	             var month = (e.date.getMonth() + 1).toString().padStart(2, '0'); // 월은 0부터 시작하므로 1 더함
+	                    	             var month = (e.date.getMonth() + 1).toString().padStart(2, '0'); 
 	                    	             var day = e.date.getDate().toString().padStart(2, '0');
 	                    	             
 	                    	             // yyyy/mm/dd 형식으로 조합
@@ -411,8 +415,13 @@ $(document).ready(function() {
                     					for (var minute = 0; minute < 60; minute += interval) {
                     						timeString = formatTime(hour) + ':' + formatTime(minute);
                     						var dateTimeString = reserveDate + ' ' + timeString;
-                    						var button = $('<button type="button" name="start" class="btn btn-outline-primary time-btn" data-time="' + dateTimeString + '">'
-                    								+ timeString + '</button>');
+                    						var button = $(
+                    								'<button type="button" 
+                    								name="start" 
+                    								class="btn btn-outline-primary time-btn" 
+                    								data-time="' + dateTimeString + '">'
+                    								+ timeString + '</button>'
+                    							);
                     						btnGroup.append(button);
                     					}
                     				}
@@ -421,6 +430,10 @@ $(document).ready(function() {
                     				function formatTime(time) {
                     					return (time < 10) ? '0' + time : time;
                     				}
+                    				
+                    				
+                    				
+                    				
                     				var doctorData = {
                     			            doctorId: selectedDoctorId,
                     			        };
@@ -435,21 +448,22 @@ $(document).ready(function() {
                     						success: function(data) {
 
                     							console.log('전송 성공:', data);          
-                    							// 받아온 데이터를 기반으로 버튼 상태 설정
+                    							// 받아온 데이터를 기반으로 버튼 상태 설정+
                     							let responTime = JSON.parse(data)
                     							
                 		                    	
                     		                	for (var i = 0; i < responTime.length; i++) {					
                     		                		$('.time-btn').each(function() {
                         		                    	var time = $(this).data('time');
-                        		                    	console.log(time, "  ", responTime[i].start.slice(0,16))
-                        				                    if (time === responTime[i].start.slice(0,16)) {
-                        				                        	$(this).addClass('btn-disabled').attr('disabled', true);
-                        				                    	console.log(responTime[i].start.slice(0,16))
+                        		                    	// 예약 시간 중복시 버튼 비활성화  
+                        				                if (
+                        				                	time === responTime[i].start.slice(0,16)) {
+                        				                    $(this).addClass('btn-disabled').attr('disabled', true);
                         				                    }
-                        		                		});
+                        		                	});
                     	            			}
                     							
+                    							//날짜 선택 후 버튼 클릭 가능하게 설정
                     							$('.time-btn').click(function() {
                     								
                     								if(start == undefined){

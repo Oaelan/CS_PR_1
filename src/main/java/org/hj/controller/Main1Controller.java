@@ -160,47 +160,36 @@ public class Main1Controller {
 		
 	// 예약 확인 페이지로 이동
 	@RequestMapping(value = "/rvlist", method = RequestMethod.GET)
-	public String goRvlist(ReservationVO rvo, Model model, LoginVO lvo, HttpSession session) {
+	public String goRvlist(
+			ReservationVO rvo, 
+			Model model, 
+			LoginVO lvo, HttpSession session) {
 		
 		lvo.setId((String)session.getAttribute("loginId"));
 		rvo.setTitle((String)session.getAttribute("name"));
 		rvo.setBirth(ls.reserveInfo(lvo).getBirth());
 		rs.selectReserveInfo(rvo);
-
 		
 		List<ReservationVO> reservations = rs.selectReserveInfo(rvo);
 		List<ReservationVO> reservation_f = new ArrayList<>();
-		
 		
 		for (ReservationVO reservation : reservations) {
 			
 		    if (((String)reservation.getBackgroundColor()).equals("red")) {
 		        int a = reservation.getNo();
-		        System.out.println("su: "+a);
 		        
 		        for (ReservationVO back : rs.selectBack(a)) {
 		        	reservation.setBackgroundColor(back.getBackgroundColor());
 		        }
 		        reservation_f.add(reservation);
-		        
 		    }
-		    
 		    else {
 		    	reservation_f.add(reservation); // 모든 경우에 추가
-		    	
 		    }
-		
 		}
-	        
-	    
-		
-		System.out.println(reservation_f);
 	    // 모델에 데이터 추가
 	    model.addAttribute("reservations", reservation_f);
-	        
-		
 
-		System.out.println(rs.selectReserveInfo(rvo));
 		return "rvlist";
 	}
 	
