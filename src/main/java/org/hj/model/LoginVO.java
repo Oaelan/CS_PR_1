@@ -8,11 +8,11 @@ public class LoginVO {
 	private String name;
 	private String birth;
 	private String phone;
-	private String userType;
+	private int userType;
 	
 	public LoginVO() {}
 	
-	public LoginVO(String id, String password, String name, String birth, String phone, String userType) {
+	public LoginVO(String id, String password, String name, String birth, String phone, int userType) {
         this.id = id;
         this.password = password;
         this.name = name;
@@ -52,10 +52,10 @@ public class LoginVO {
 	public final void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public final String getUserType() {
+	public final int getUserType() {
 		return userType;
 	}
-	public final void setUserType(String userType) {
+	public final void setUserType(int userType) {
 		this.userType = userType;
 	}
 	

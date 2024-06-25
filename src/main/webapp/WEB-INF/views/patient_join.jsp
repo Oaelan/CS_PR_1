@@ -307,6 +307,6 @@ select:focus {
 		</div>
 	</div>
 <jsp:include page="footer.jsp"></jsp:include>
-<script type="text/javascript" src="../resources/JS/login.js"></script>
+<script type="text/javascript" src="../resources/JS/login.js?ver=0"></script>
 </body>
 </html>

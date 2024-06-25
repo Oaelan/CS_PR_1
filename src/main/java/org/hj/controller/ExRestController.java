@@ -49,9 +49,8 @@ public class ExRestController {
 		// ObjectMapper는 JSON 데이터와 Java 객체 간의 변환을 수행하는 데 사용
 		ObjectMapper objectmapper = new ObjectMapper();
 
-		// writeValueAsString() 메서드 호출: ObjectMapper 인스턴스의 writeValueAsString() 메서드를
-		// 사용하여
-		// Java 객체를 JSON 문자열로 변환합니다. 이 메서드는 주어진 Java 객체를 JSON 형식의 문자열로 직렬화합니다.
+		// writeValueAsString() 메서드 호출: ObjectMapper 인스턴스의 writeValueAsString() 메서드를 사용하여
+		// Java 객체를 JSON 문자열로 변환 
 		String doctorSchedule = objectmapper.writeValueAsString(schedule);
 
 		// 셀렉트된 의사들의 스케쥴 확인

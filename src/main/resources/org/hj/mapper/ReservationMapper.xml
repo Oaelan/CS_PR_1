@@ -28,7 +28,7 @@
 	<!-- 환자가 예약한 내용 가져옴 -->
 	<select id = "selectReserveInfo" parameterType="org.hj.model.ReservationVO" resultType="org.hj.model.ReservationVO">
 		select no, tName,start,backgroundColor from reservation
-		where  title = #{title} and birth = #{birth} and active = true
+		where  title = #{title} and birth = #{birth} and active = true order by start DESC;
 	</select> 
 	
 	<!-- 진료타입 가져옴 -->
