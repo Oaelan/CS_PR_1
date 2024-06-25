@@ -452,7 +452,7 @@ a {
         
         // JavaScript Date 객체로 변환 (브라우저의 지역 시간대 사용)
         var date = new Date(dateTimeStr);
-                         
+            	             
             // 서버로 데이터 전송
             $.ajax({
                 type: 'POST',
