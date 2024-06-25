@@ -234,23 +234,24 @@ select:focus {
 				</tr>
 				<tr><td><label id="emailLabel"></label></td></tr>
 			</table>
-			<input type="hidden" value="1" id="userType" name="userType">
+			
 			<table>
 				<tr>
 					<td id="select">
                 	<select id="userType" name="userType">
 	                    <option value="">전공 분야 선택</option>
-	                    <option value="2">정형외과</option>
-	                    <option value="3">소아과</option>
-	                    <option value="4">피부과</option>
-	                    <option value="5">정신과</option>
-	                    <option value="6">외과</option>
-	                    <option value="7">내과</option>
-	                    <option value="8">산부인과</option>
-	                    <option value="9">비뇨기과</option>
-	                    <option value="10">소화기내과</option>
-	                    <option value="11">안과</option>
-	                    <option value="12">이비인후과</option>
+	                    <option value="2">호흡기내과</option>
+	                    <option value="3">순환기내과</option>
+	                    <option value="4">소화기내과</option>
+	                    <option value="5">혈액종양내과</option>
+	                    <option value="6">내분비대사내과</option>
+	                    <option value="7">알레르기내과</option>
+	                    <option value="8">신장내과</option>
+	                    <option value="9">감염내과</option>
+	                    <option value="10">류마티스내과</option>
+	                    <option value="11">내과(일반)</option>
+	                    <option value="12">내과</option>
+	                    <option value="13">외과</option>
                 	</select>
             		</td>
 				</tr>

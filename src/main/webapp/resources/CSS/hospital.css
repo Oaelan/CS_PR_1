@@ -26,6 +26,7 @@ html, body {
 }
 
 #main1 img {
+	width: 1600px;
 }
 
 
@@ -33,7 +34,7 @@ html, body {
 
 .slide {
     display: none; /* 모든 슬라이드를 숨김 */
-    width: 100%; /* 이미지가 컨테이너에 맞게 보이도록 너비 설정 */
+    /* width: 100%; */ /* 이미지가 컨테이너에 맞게 보이도록 너비 설정 */
 }
 
 .slide:first-child {

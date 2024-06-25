@@ -572,7 +572,7 @@ a {
 			var isDoctor = info.event.title.includes('의사');
 			// 메시지를 조건에 따라 동적으로 생성
 			// isDoctor가 '의사'를 포함할때 '', 아닐 때는 ' 환자의'
-			var message = info.event.title + (isDoctor ? '의 ' : ' 환자의 ') + formattedStartDate + ' 진료일정을 삭제하시겠습니까?';
+			// var message = info.event.title + (isDoctor ? '의 ' : ' 환자의 ') + formattedStartDate + ' 진료일정을 삭제하시겠습니까?';
 			// 삭제/수정 여부 물어보기
 			$('#confirmModal').modal('show');
 			
@@ -593,7 +593,7 @@ a {
 
 			
 			
-			
+				// 삭제 버튼을 클릭 했을 때 삭제 기능 구현 
 				$('#delete-event-btn').off('click').on('click', function() {				  				    
 				    if(info.event.extendedProps.doctorId == document.getElementById("doctorLoginId").value) {
 				        $.ajax({

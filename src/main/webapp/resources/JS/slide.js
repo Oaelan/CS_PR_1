@@ -2,8 +2,6 @@
  * 
  */
 
-	// slide.js
-
 	let currentSlide = 0;
 	const slides = document.querySelectorAll('.slide'); // 모든 슬라이드 요소를 가져옴
 	const totalSlides = slides.length;

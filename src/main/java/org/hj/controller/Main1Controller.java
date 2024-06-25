@@ -92,7 +92,7 @@ public class Main1Controller {
 			session.setAttribute("userType", (ls.login(lvo)).getUserType());
 			
 			//로그인 후 환자일 경우 메인 페이지
-			if(((ls.login(lvo)).getUserType()).equals("1")) {
+			if(((ls.login(lvo)).getUserType())== 1) {
 				System.out.println("환자" + (ls.login(lvo)).getUserType());				
 				return "hospital";	
 			}

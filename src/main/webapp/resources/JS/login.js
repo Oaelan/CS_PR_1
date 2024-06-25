@@ -85,7 +85,7 @@
 	phoneLabel.style.color = "white";
 	
 	phone.addEventListener("blur", () => {
-	    var phonePattern = /^01[0|1|6|7|8|9]\d{3,4}\d{4}$/;
+		var phonePattern = /^01[016789]-\d{3,4}-\d{4}$/;
 	    if (phone.value.match(phonePattern)) {
 	        phoneLabel.textContent = "올바른 전화번호 형식입니다.";
 	        phoneLabel.style.color = "green";
