@@ -45,12 +45,13 @@ public class ReserveController {
     
     // 예약된 시간을 가져오는 엔드포인트
     @PostMapping("/getTime")
-    public ResponseEntity<String> getTime(@RequestParam("doctorId") String doctorId, ReservationVO rvo)throws JsonProcessingException {
+    public ResponseEntity<String> getTime(
+    		@RequestParam("doctorId") String doctorId, 
+    		ReservationVO rvo
+    )throws JsonProcessingException {
         rvo.setDoctorId(doctorId);
         
-        System.out.println(rvo);
     	System.out.println("시간 정보 받아오는 컨트롤러");
-    	System.out.println("aa"+doctorId);
     	
         List<ReservationVO> allTime = rs.getTime(rvo);
 		ObjectMapper objectmapper = new ObjectMapper();
