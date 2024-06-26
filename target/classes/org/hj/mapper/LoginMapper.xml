@@ -33,4 +33,10 @@
   		where id=#{id}
   	</select>
   
+  	<!-- 회원 탈퇴 -->
+  	<delete id="deleteUser">
+  		DELETE FROM user
+		WHERE id = #{id};
+  	</delete>
+  	
   </mapper>

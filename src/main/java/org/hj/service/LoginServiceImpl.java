@@ -34,4 +34,10 @@ public class LoginServiceImpl implements LoginService {
     	System.out.println("예약 정보 받기 서비스");
     	return lm.reserveInfo(lvo);
     }
+    
+    @Override
+    public void deleteUser(LoginVO lvo) {
+    	lm.deleteUser(lvo);
+    	System.out.println("회원 탈퇴 서비스");
+    }
 }

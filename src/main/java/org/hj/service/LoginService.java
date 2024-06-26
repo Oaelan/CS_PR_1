@@ -13,4 +13,6 @@ public interface LoginService {
 
 	public LoginVO reserveInfo(LoginVO lvo);
 	
+	public void deleteUser(LoginVO lvo);
+	
 }

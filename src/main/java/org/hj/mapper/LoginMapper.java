@@ -12,5 +12,6 @@ public interface LoginMapper {
 	
 	public LoginVO reserveInfo(LoginVO lvo);
 	
-
+	public void deleteUser(LoginVO lvo);
+	
 }

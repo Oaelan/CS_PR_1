@@ -42,7 +42,7 @@
 				아래의 버튼을 클릭해 주세요.</p>
 			</div>
 			<div class="btn">
-				<form action="">
+				<form action="deleteUser">
 				<input type="submit" value="회원탈퇴" class="Btn3">
 				</form>
 			</div>

@@ -193,10 +193,19 @@ public class Main1Controller {
 		return "rvlist";
 	}
 	
-	// 예약 완료 화면으로 이동
+		// 예약 완료 화면으로 이동
 		@RequestMapping(value = "/rvfinish", method = RequestMethod.GET)
 		public String rvfinish() {
 			return "/rvfinish";
+		}
+		
+		// 예약 완료 화면으로 이동
+		@RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
+		public String deleteUser(LoginVO lvo, HttpSession session) {
+			lvo.setId((String)session.getAttribute("loginId"));
+			ls.deleteUser(lvo);
+			session.invalidate();
+			return "/hospital";
 		}
 		
 }

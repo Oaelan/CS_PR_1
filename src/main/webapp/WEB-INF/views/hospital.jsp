@@ -10,7 +10,7 @@
 <title>서울대학교병원</title>
 <link rel="stylesheet" href="../resources/CSS/hospital.css?ver=2">	
 <link rel="stylesheet" href="../resources/CSS/header.css?ver=1">
-<link rel="stylesheet" href="../resources/CSS/LoginSuccess.css?ver=0">  <!-- ?ver=1 붙이면 css 적용 빨라짐  -->
+<link rel="stylesheet" href="../resources/CSS/LoginSuccess.css?ver=3">  <!-- ?ver=1 붙이면 css 적용 빨라짐  -->
 <style type="text/css">
 
 </style>

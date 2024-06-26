@@ -273,14 +273,14 @@ input::placeholder {
     left: 5px;
 }
 #rv4>li{
-	float: left;
-    height: 38px;
+	/* float: left; */
+    height: 60px;
     margin-right: -1px;
     padding: 0 12px;
     border: 1px solid #2763ba;
     font-size: 14px;
     text-align: center;
-    line-height: 38px;
+    line-height: 55px;
     list-style: none;
     
 }
@@ -288,7 +288,7 @@ input::placeholder {
 #rv4 > li > a {
     color: #2763ba; /* 링크 글씨 색깔을 흰색으로 변경 */
     text-decoration: none;
-    font-size: 13px;
+    font-size: 20px;
     margin-left: 0px;
 }
 

@@ -16,7 +16,7 @@
 		<c:if test="${loginId == null}">		
 			<ul>
 				<li><a href="login">로그인</a></li>
-				<li><a href="login">회원가입</a></li>
+				<li><a href="patient_join">회원가입</a></li>
 			</ul>
 		</c:if>
 		</div>

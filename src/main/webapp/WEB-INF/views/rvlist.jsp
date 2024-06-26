@@ -38,7 +38,7 @@
                                     </tr>
                                     <tr>
                                         <th>진료일시</th>
-                                        <td class="date">${data.start}</td>
+                                        <td class="date">${(data.start).substring(0, 16)}</td>
                                     </tr>
                                     <tr>
                                         <th id="exTy">진료 타입</th>
