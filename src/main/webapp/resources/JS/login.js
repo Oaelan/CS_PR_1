@@ -95,5 +95,46 @@
 	    }
 	});
 
-	
+	function validateForm() {
+	    var userIdPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{5,20}$/;
+	    var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,25}$/;
+	    var namePattern = /^[가-힣]{2,6}$/;
+	    var phonePattern = /^01[016789]-\d{3,4}-\d{4}$/;
+
+	    // 각 필드의 값
+	    var userIdValue = document.getElementById("userId").value;
+	    var passwordValue = document.getElementById("pw").value;
+	    var confirmPasswordValue = document.getElementById("pwcheck").value;
+	    var nameValue = document.getElementById("name").value;
+	    var phoneValue = document.getElementById("phone").value;
+
+	    // 각 필드의 유효성 검사
+	    if (!userIdValue.match(userIdPattern)) {
+	        alert("사용자 ID는 영문자와 숫자를 조합하여 5-20자여야 합니다.");
+	        return false;
+	    }
+
+	    if (!passwordValue.match(passwordPattern)) {
+	        alert("비밀번호는 영문자, 숫자, 특수문자를 조합하여 8-25자여야 합니다.");
+	        return false;
+	    }
+
+	    if (passwordValue !== confirmPasswordValue) {
+	        alert("비밀번호가 일치하지 않습니다.");
+	        return false;
+	    }
+
+	    if (!nameValue.match(namePattern)) {
+	        alert("이름은 한글만 2-6자여야 합니다.");
+	        return false;
+	    }
+
+	    if (!phoneValue.match(phonePattern)) {
+	        alert("올바른 전화번호 형식이 아닙니다.");
+	        return false;
+	    }
+
+	    // 모든 유효성 검사 통과 시 폼 제출
+	    return true;
+	}	
 	

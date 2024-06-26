@@ -226,7 +226,7 @@ select:focus {
 	</div>
 	</form>
 	<div class="container">
-	<form id = "join" action = "/patient_join" method = "post">
+	<form id = "join" action = "/patient_join" method = "post" onsubmit="return validateForm()">
 		<div id="box5">
 			<table>
 				<tr>
