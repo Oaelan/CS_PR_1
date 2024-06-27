@@ -71,7 +71,7 @@ input[type="radio"]:checked + .rButton {
 	box-sizing: border-box;
 	display: inline-block;
 	cursor: pointer;
-	border: 1px solid #3498db; /* 테두리 스타일 */
+	border: 2px solid #3498db; /* 테두리 스타일 */
 	border-radius: 5px; /* 모서리를 둥글게 */
 	transition: background-color 0.3s ease;
 	width: 135px; /* 라벨의 고정된 너비 */
@@ -106,8 +106,8 @@ input[type="radio"]:checked + .rButton {
             padding: 5px 10px; /* 버튼 내부 여백 조정 */
         }
         .btn-disabled {
-            pointer-events: none;
-            opacity: 0.6;
+            color: #737474 !important;
+            border-color: #737474 !important; 
         }
 </style>
 
@@ -510,7 +510,8 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify(reserveInfo),
             success: function(response) {
-                console.log('전송 성공:', response);
+            	
+                console.log('전송 성공1:', response);
                 window.location.href = '/rvfinish';
             }
         });
