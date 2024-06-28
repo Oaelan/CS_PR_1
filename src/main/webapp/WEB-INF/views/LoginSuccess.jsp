@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>로그인 성공</title>
 <link rel="stylesheet" href="../resources/CSS/LoginSuccess.css">
-<link rel="stylesheet" href="../resources/CSS/header.css">
+<link rel="stylesheet" href="../resources/CSS/header.css?ver=0">
 
 </head>
 <body>
