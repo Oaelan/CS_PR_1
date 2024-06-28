@@ -23,6 +23,7 @@ header {
 header ul {
 	position: relative;
 	left: 250px;
+	width: 210px;
 }
 
 header li{
