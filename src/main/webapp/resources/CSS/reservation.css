@@ -11,24 +11,29 @@ html, body {
 		스크롤 O  => height,overflow 삭제 	*/
 }
 
-.menu {
-	 margin-left: 100px;
+header {
+	padding: 5px;	
+}
+
+header ul {
+	padding-left: 40px;
+    margin-top: 16px;
+    width: 250px;
+    height: 21px;
+}
+
+nav {
+    height: 71px;
+    padding-top: 10px;
 }
 
 nav ul {
-	position: relative;
-	bottom: 3px;
-	margin: 15px 250px 15px 400px;
+	margin-top: 16px;
 }
-
-nav li {
-	display: inline;
-	margin-left: 120px;
-	font-size: 18px;
+#hspt {
 	position: relative;
-	font-family: 나눔고딕;
+	left: 120px;
 }
-
 .entire {
 	background-color: #f3f3f3;
 }
