@@ -48,6 +48,8 @@ CREATE TABLE reservation (
 
 ### 😀 프론트엔드 화면 설계
 화면 설계는 서울대학병원 사이트를 모작하였습니다.
+
+
 ![image](https://github.com/user-attachments/assets/b6529331-c624-459a-9ce8-2d28c6b97f58)
 ![image](https://github.com/user-attachments/assets/5a9f211d-45d6-428e-8680-6d7c13d35907)
 ![image](https://github.com/user-attachments/assets/a702233d-c728-45cf-8f93-c41e775deda7)
@@ -63,6 +65,8 @@ CREATE TABLE reservation (
 #### 👩‍💻 환자 예약 시스템 
 1. 환자 진료 예약
 2. 예약 내역 확인
+
+
 ![image](https://github.com/user-attachments/assets/357467b6-d1c5-4ce0-973e-361c2a434a02)
 ![image](https://github.com/user-attachments/assets/38941d88-2559-4e24-941e-af8b05dc7344)
 
@@ -75,6 +79,7 @@ CREATE TABLE reservation (
 1. 일정 확인 및 조회
 2. 일정 추가, 삭제
 3. 일정 수정 및 변경
+
 ![image](https://github.com/user-attachments/assets/1f0db7da-d3c7-49f3-a8a0-8bc3f8b2c944)
 ![image](https://github.com/user-attachments/assets/fd704dbe-7d87-49a0-98e4-1f247f508669)
 ![image](https://github.com/user-attachments/assets/79be4078-35a6-4df1-bc70-e191549d0680)
