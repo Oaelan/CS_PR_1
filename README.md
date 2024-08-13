@@ -48,7 +48,11 @@ CREATE TABLE reservation (
 
 ### 😀 프론트엔드 화면 설계
 화면 설계는 서울대학병원 사이트를 모작하였습니다.
-(이미지 넣기)
+![image](https://github.com/user-attachments/assets/b6529331-c624-459a-9ce8-2d28c6b97f58)
+![image](https://github.com/user-attachments/assets/5a9f211d-45d6-428e-8680-6d7c13d35907)
+![image](https://github.com/user-attachments/assets/a702233d-c728-45cf-8f93-c41e775deda7)
+
+
 
 
 
@@ -59,6 +63,8 @@ CREATE TABLE reservation (
 #### 👩‍💻 환자 예약 시스템 
 1. 환자 진료 예약
 2. 예약 내역 확인
+![image](https://github.com/user-attachments/assets/357467b6-d1c5-4ce0-973e-361c2a434a02)
+![image](https://github.com/user-attachments/assets/38941d88-2559-4e24-941e-af8b05dc7344)
 
 - 예약 중 내용 실시간 확인
 - 선택한 값에 따른 실시간 적용(비동기식 처리 활용)
@@ -69,8 +75,44 @@ CREATE TABLE reservation (
 1. 일정 확인 및 조회
 2. 일정 추가, 삭제
 3. 일정 수정 및 변경
+![image](https://github.com/user-attachments/assets/1f0db7da-d3c7-49f3-a8a0-8bc3f8b2c944)
+![image](https://github.com/user-attachments/assets/fd704dbe-7d87-49a0-98e4-1f247f508669)
+![image](https://github.com/user-attachments/assets/79be4078-35a6-4df1-bc70-e191549d0680)
+![image](https://github.com/user-attachments/assets/6169be63-1a18-4b1d-bf59-715fdb996bd7)
 
 - 예약 된 일정을 캘린더에 조회 가능(전체 일정 / 개인 일정)
 - 원하는 날짜의 일정 조회 가능
 - 일정 추가 / 삭제 / 수정 시 캘린더에 실시간 적용
 - 일정 수정 요청 시 상대방이 거절 / 받기 가능하게 기능 추가
+
+
+### 😀 실제 기능별 영상
+
+
+#### 👩‍💻 회원가입
+https://github.com/user-attachments/assets/f657baa9-6af1-4964-a229-98c5bdeb85a6
+
+#### 👩‍💻 회원탈퇴
+https://github.com/user-attachments/assets/21df5907-4296-4c2e-9598-7b16f2cadc9e
+
+#### 👩‍💻 환자 예약 기능
+https://github.com/user-attachments/assets/3fdf4535-482c-4b32-92e1-889f2ae50176
+https://github.com/user-attachments/assets/21ade2c5-e3bf-40a4-8900-14f1536745e2
+
+#### 👩‍💻 환자 예약 확인 기능
+https://github.com/user-attachments/assets/86e8f238-3544-4bec-84ae-9d3044300e40
+
+#### 👩‍💻 의사 일정 관리 기능(일정추가)
+https://github.com/user-attachments/assets/fd4bfa8c-cedb-4c65-b233-f86e4c47c2ce
+https://github.com/user-attachments/assets/6f5a0d73-86f8-4ed8-9de8-fab02292e366
+
+#### 👩‍💻 의사 일정 관리 기능(수정)
+https://github.com/user-attachments/assets/0e42ed0e-44eb-4561-b909-404faf2f366b
+https://github.com/user-attachments/assets/4f693dd0-341c-4ec3-b8a7-27cc6c4362ea
+
+#### 👩‍💻 의사 일정 관리 기능(일정 조회)
+https://github.com/user-attachments/assets/b3add481-4e49-4a55-b4d0-cea6c3aa87db
+
+
+
+
